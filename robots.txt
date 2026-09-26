@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://goldstandardinsgroup.com/sitemap.xml
