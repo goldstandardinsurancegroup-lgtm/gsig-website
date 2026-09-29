@@ -1,0 +1,4161 @@
+/*
+Theme Name: Kadence Child
+Template: kadence
+Version: 1.0.3
+Description: Child theme for Kadence. Custom CSS migrated from Additional CSS.
+*/
+
+/* ============================================================
+   MIGRATED FROM WP CUSTOMIZER (Additional CSS)
+============================================================ */
+
+/* ============================================================
+   VARIABLES
+============================================================ */
+:root {
+  /* Brand palette */
+  --color-primary: #00356B;
+  --color-primary-rgb: 0, 53, 107;
+  --color-primary-deep: #002a55;
+  --color-primary-deep-rgb: 0, 42, 85;
+  --color-gold-rgb: 201, 162, 39;
+  --color-gold: #c9a227;
+  --color-gold-soft: rgba(201, 162, 39, 0.35);
+  --color-gold-border: rgba(201, 162, 39, 0.22);
+  --accent-divider: linear-gradient(
+    90deg,
+    var(--color-gold),
+    rgba(201, 162, 39, 0.15)
+  );
+
+  /* ============================================================
+     DEFAULT THEME = DARK (no attribute required)
+     We keep light as an opt-in override via body[data-theme="light"], body.theme-light
+  ============================================================ */
+  --color-bg-main: #0b1220;         /* page background */
+  --color-bg-soft: #0f172a;         /* section surface */
+  --color-bg-card: #111c33;         /* card surface */
+
+  --color-bg-main-rgb: 11, 18, 32;
+  --color-bg-soft-rgb: 15, 23, 42;
+  --color-bg-card-rgb: 17, 28, 51;
+
+  --color-text-main: #e6e9f2;
+  --color-text-muted: rgba(230, 233, 242, 0.74);
+
+  --color-border-soft: rgba(230, 233, 242, 0.12);
+
+  --color-header-bg: rgba(11, 18, 32, 1);
+  --color-header-border: rgba(230, 233, 242, 0.14);
+
+  --accent-divider: linear-gradient(
+    90deg,
+    var(--color-gold),
+    rgba(201, 162, 39, 0.28)
+  );
+
+  --cta-bg: linear-gradient(
+    135deg,
+    rgba(199, 165, 94, 0.96) 0%,
+    rgba(227, 200, 125, 0.94) 35%,
+    rgba(187, 148, 64, 0.96) 70%,
+    rgba(145, 109, 33, 0.96) 100%
+  );
+  --cta-border: rgba(255, 232, 160, 0.22);
+  --cta-text: rgba(232, 236, 245, 0.98);
+  --cta-subtext: rgba(232, 236, 245, 0.78);
+  --cta-button-bg: rgba(201, 162, 39, 0.95);
+  --cta-button-text: rgba(10, 14, 22, 0.95);
+  --cta-button-border: rgba(201, 162, 39, 0.55);
+}
+
+/* Global box sizing + media safety */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ============================================================
+   LIGHT THEME OVERRIDES (opt-in)
+   Activate via: body[data-theme="light"], body.theme-light
+============================================================ */
+body[data-theme="light"], body.theme-light {
+  --color-bg-main: #ffffff;
+  --color-bg-soft: #f3f5f9;
+  --color-bg-card: #ffffff;
+
+  --color-bg-main-rgb: 255, 255, 255;
+  --color-bg-soft-rgb: 243, 245, 249;
+  --color-bg-card-rgb: 255, 255, 255;
+
+  --color-text-main: #0b1220;
+  --color-text-muted: rgba(11, 18, 32, 0.72);
+
+  --color-border-soft: rgba(15, 23, 42, 0.10);
+
+  --color-header-bg: rgba(255, 255, 255, 1);
+  --color-header-border: rgba(15, 23, 42, 0.12);
+
+  --accent-divider: linear-gradient(
+    90deg,
+    var(--color-gold),
+    rgba(201, 162, 39, 0.15)
+  );
+
+  --cta-bg: linear-gradient(
+    135deg,
+    rgba(210, 180, 105, 0.90) 0%,
+    rgba(236, 208, 135, 0.88) 35%,
+    rgba(196, 158, 76, 0.90) 70%,
+    rgba(155, 118, 40, 0.90) 100%
+  );
+  --cta-border: rgba(255, 232, 160, 0.20);
+  --cta-text: rgba(232, 236, 245, 0.98);
+  --cta-subtext: rgba(232, 236, 245, 0.76);
+  --cta-button-bg: rgba(201, 162, 39, 0.92);
+  --cta-button-text: rgba(10, 14, 22, 0.95);
+  --cta-button-border: rgba(201, 162, 39, 0.48);
+}
+
+/* ============================================================
+   PALETTE OVERRIDES (opt-in)
+   Activate via: body[data-palette="black"] or body.palette-black
+============================================================ */
+body[data-palette="black"], body.palette-black {
+  --color-primary: #0b0f1a;
+  --color-primary-rgb: 11, 15, 26;
+  --color-primary-deep: #05070d;
+  --color-primary-deep-rgb: 5, 7, 13;
+}
+
+/* ============================================================
+   LIGHT THEME COMPONENT TUNING
+   Keeps light mode crisp and readable across sections.
+============================================================ */
+body[data-theme="light"], body.theme-light {
+  --color-bg-soft: #f7f8fb;
+  --color-bg-card: #ffffff;
+  --color-border-soft: rgba(15, 23, 42, 0.10);
+}
+
+body[data-theme="light"] .hero-wrap,
+body.theme-light .hero-wrap {
+  background-color: #f7f8fb !important;
+  background-image:
+    radial-gradient(820px 420px at 18% 8%, rgba(var(--color-primary-rgb), 0.06), transparent 62%),
+    radial-gradient(740px 380px at 85% 30%, rgba(var(--color-gold-rgb), 0.11), transparent 60%),
+    radial-gradient(520px 260px at 18% 88%, rgba(var(--color-gold-rgb), 0.07), transparent 62%),
+    linear-gradient(120deg, rgba(var(--color-gold-rgb), 0.08), rgba(var(--color-gold-rgb), 0) 55%),
+    linear-gradient(180deg, rgba(15, 23, 42, 0.06), rgba(15, 23, 42, 0));
+  border-color: rgba(15, 23, 42, 0.08) !important;
+  box-shadow:
+    0 18px 46px rgba(15, 23, 42, 0.10),
+    0 0 0 1px rgba(15, 23, 42, 0.04);
+}
+
+body[data-theme="light"] .hero-wrap > .wp-block-group__inner-container > .hero-card,
+body.theme-light .hero-wrap > .wp-block-group__inner-container > .hero-card,
+body[data-theme="light"] .wp-block-group.hero-wrap > .wp-block-group__inner-container > .wp-block-group.hero-card,
+body.theme-light .wp-block-group.hero-wrap > .wp-block-group__inner-container > .wp-block-group.hero-card {
+  background: #ffffff !important;
+  border: 1px solid rgba(15, 23, 42, 0.12) !important;
+  box-shadow:
+    0 14px 34px rgba(15, 23, 42, 0.12),
+    0 0 0 1px rgba(15, 23, 42, 0.03) !important;
+}
+
+body[data-theme="light"] .service-card,
+body.theme-light .service-card,
+body[data-theme="light"] .why-card,
+body.theme-light .why-card {
+  background: #ffffff !important;
+  color: #0b1220 !important;
+  border: 1px solid rgba(15, 23, 42, 0.10) !important;
+  box-shadow: 0 12px 26px rgba(15, 23, 42, 0.08) !important;
+}
+
+body[data-theme="light"] .why-card p,
+body.theme-light .why-card p,
+body[data-theme="light"] .service-card p,
+body.theme-light .service-card p {
+  color: rgba(11, 18, 32, 0.78) !important;
+}
+
+body[data-theme="light"] .why-carousel::before,
+body[data-theme="light"] .why-carousel::after,
+body.theme-light .why-carousel::before,
+body.theme-light .why-carousel::after {
+  background: none;
+}
+
+body[data-theme="light"] .why-carousel,
+body.theme-light .why-carousel {
+  background: transparent !important;
+}
+
+body[data-theme="light"] .cta-section,
+body.theme-light .cta-section {
+  background: var(--cta-bg) !important;
+  border: 1px solid rgba(201, 162, 39, 0.40) !important;
+  box-shadow: 0 16px 42px rgba(15, 23, 42, 0.10) !important;
+}
+
+body[data-theme="light"] .cta-section .cta-card,
+body.theme-light .cta-section .cta-card,
+body[data-theme="light"] .wp-block-group.cta-card,
+body.theme-light .wp-block-group.cta-card {
+  background: rgba(255, 255, 255, 0.92) !important;
+  border: 1px solid rgba(15, 23, 42, 0.10) !important;
+  box-shadow: none !important;
+}
+
+/* ============================================================
+   LIGHT + BLUE POLISH (lock dark/blue unchanged)
+============================================================ */
+body.theme-light.palette-blue #masthead .main-navigation a[href*="schedule"],
+body.theme-light.palette-blue #masthead .site-navigation a[href*="schedule"] {
+  color: rgba(15, 63, 119, 0.98) !important;
+}
+
+body.theme-light.palette-blue #masthead .main-navigation a[href*="schedule"]:hover,
+body.theme-light.palette-blue #masthead .site-navigation a[href*="schedule"]:hover {
+  color: rgba(15, 63, 119, 0.75) !important;
+}
+
+body.theme-light.palette-blue .why-carousel::before,
+body.theme-light.palette-blue .why-carousel::after {
+  display: none !important;
+}
+
+body.theme-light.palette-blue .why-carousel {
+  background: transparent !important;
+}
+
+body.theme-light.palette-blue .gold-edge,
+body.theme-light.palette-blue .gold-edge--left,
+body.theme-light.palette-blue .gold-edge--right {
+  background-image: none !important;
+  background-color: transparent !important;
+}
+
+body.theme-light.palette-blue .gold-frame-left {
+  border-left: 4px solid rgba(15, 63, 119, 0.9) !important;
+  box-shadow: none !important;
+}
+
+body.theme-light.palette-blue .gold-frame-right {
+  border-right: 4px solid rgba(15, 63, 119, 0.9) !important;
+  box-shadow: none !important;
+}
+
+body.theme-light.palette-blue .why-card,
+body.theme-light.palette-blue .service-card {
+  background: #ffffff !important;
+  color: #0b1220 !important;
+  border: 1px solid rgba(15, 23, 42, 0.18) !important;
+  box-shadow:
+    0 20px 46px rgba(15, 23, 42, 0.14),
+    0 4px 10px rgba(15, 23, 42, 0.08) !important;
+}
+
+body.theme-light.palette-blue .cta-section {
+  background: var(--cta-bg) !important;
+  border: 2px solid rgba(201, 162, 39, 0.75) !important;
+  box-shadow:
+    0 26px 60px rgba(15, 23, 42, 0.16),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.6) !important;
+}
+
+body.theme-light.palette-blue .cta-section .cta-card,
+body.theme-light.palette-blue .wp-block-group.cta-card {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.45)),
+    var(--cta-bg) !important;
+  color: rgba(10, 14, 22, 0.92) !important;
+  border: 1px solid rgba(201, 162, 39, 0.55) !important;
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.12) !important;
+}
+
+body.theme-light.palette-blue .cta-section .wp-block-heading,
+body.theme-light.palette-blue .cta-section p,
+body.theme-light.palette-blue .cta-section li {
+  color: rgba(10, 14, 22, 0.92) !important;
+}
+
+body.theme-light.palette-blue .cta-section .wp-block-heading {
+  letter-spacing: -0.01em;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+body.theme-light.palette-blue .cta-section p {
+  color: rgba(10, 14, 22, 0.80) !important;
+}
+
+body.theme-light.palette-blue .cta-section .wp-block-button__link,
+body.theme-light.palette-blue .cta-section .wp-element-button {
+  background: rgba(201, 162, 39, 0.95) !important;
+  color: rgba(10, 14, 22, 0.98) !important;
+  border: 1px solid rgba(201, 162, 39, 0.55) !important;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.25) !important;
+}
+
+/* Fix low-contrast buttons in light/blue */
+body.theme-light.palette-blue .wp-block-button__link,
+body.theme-light.palette-blue .wp-element-button {
+  color: #ffffff !important;
+}
+
+body.theme-light.palette-blue .wp-block-button__link.has-text-color,
+body.theme-light.palette-blue .wp-element-button.has-text-color {
+  color: #ffffff !important;
+}
+
+/* Stronger contrast for light/blue header + sections */
+body.theme-light.palette-blue #masthead,
+body.theme-light.palette-blue .kadence-sticky-header-wrap {
+  background: #ffffff !important;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08) !important;
+}
+
+body.theme-light.palette-blue #masthead .main-navigation a,
+body.theme-light.palette-blue #masthead .site-navigation a {
+  color: #101826 !important;
+  font-weight: 600;
+}
+
+body.theme-light.palette-blue #masthead .main-navigation a::after,
+body.theme-light.palette-blue #masthead .site-navigation a::after {
+  background: linear-gradient(
+    90deg,
+    rgba(201, 162, 39, 0.35),
+    rgba(201, 162, 39, 0.9),
+    rgba(201, 162, 39, 0.35)
+  ) !important;
+  box-shadow: 0 0 10px rgba(201, 162, 39, 0.25) !important;
+  opacity: 0.9 !important;
+}
+
+body.theme-light.palette-blue .accent-title::after {
+  background: linear-gradient(
+    90deg,
+    rgba(201, 162, 39, 0.35),
+    rgba(201, 162, 39, 0.9),
+    rgba(201, 162, 39, 0.35)
+  ) !important;
+  opacity: 0.95 !important;
+}
+
+/* Ensure card headings use gold underline */
+body.theme-light.palette-blue .why-card h3::after,
+body.theme-light.palette-blue .service-card h3::after,
+body.theme-light.palette-blue .service-detail-card h3::after,
+body.theme-light.palette-blue .service-detail-card h2::after,
+body.theme-light.palette-blue .service-detail-card .wp-block-heading::after {
+  background: linear-gradient(
+    90deg,
+    rgba(201, 162, 39, 0.35),
+    rgba(201, 162, 39, 0.9),
+    rgba(201, 162, 39, 0.35)
+  ) !important;
+  opacity: 0.95 !important;
+}
+
+body.theme-light.palette-blue .why-card .wp-block-heading::after,
+body.theme-light.palette-blue .why-card h2::after,
+body.theme-light.palette-blue .why-card h3::after,
+body.theme-light.palette-blue .why-card .accent-title::after {
+  background: linear-gradient(
+    90deg,
+    rgba(201, 162, 39, 0.35),
+    rgba(201, 162, 39, 0.9),
+    rgba(201, 162, 39, 0.35)
+  ) !important;
+  opacity: 0.95 !important;
+}
+
+/* Header bar (thin line) should be blue in light/blue */
+body.theme-light.palette-blue #masthead .site-header-row-container::after,
+body.theme-light.palette-blue .kadence-sticky-header-wrap .site-header-row-container::after {
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(15, 63, 119, 0),
+      rgba(15, 63, 119, 0.55),
+      rgba(15, 63, 119, 0)
+    ),
+    linear-gradient(
+      90deg,
+      rgba(15, 63, 119, 0.35),
+      rgba(15, 63, 119, 0.85),
+      rgba(15, 63, 119, 0.35)
+    ) !important;
+  box-shadow: 0 1px 0 rgba(15, 63, 119, 0.35) !important;
+}
+
+/* Headings: gold accents by default (keep carousel heading blue) */
+body.theme-light.palette-blue .wp-block-heading::after,
+body.theme-light.palette-blue h2::after {
+  background: linear-gradient(
+    90deg,
+    rgba(201, 162, 39, 0.35),
+    rgba(201, 162, 39, 0.9),
+    rgba(201, 162, 39, 0.35)
+  ) !important;
+  opacity: 0.95 !important;
+}
+
+body.theme-light.palette-blue h2.wp-block-heading.has-text-align-center::after {
+  background: linear-gradient(
+    90deg,
+    rgba(201, 162, 39, 0.35),
+    rgba(201, 162, 39, 0.9),
+    rgba(201, 162, 39, 0.35)
+  ) !important;
+  opacity: 0.95 !important;
+}
+
+body.theme-light.palette-blue .section-accent::after,
+body.theme-light.palette-blue .wp-block-heading.section-accent::after,
+body.theme-light.palette-blue h2.wp-block-heading.section-accent::after,
+body.theme-light.palette-blue h2.wp-block-heading::after {
+  background: linear-gradient(
+    90deg,
+    rgba(201, 162, 39, 0.35),
+    rgba(201, 162, 39, 0.9),
+    rgba(201, 162, 39, 0.35)
+  ) !important;
+  opacity: 0.95 !important;
+}
+
+body.theme-light.palette-blue .wp-block-heading::after {
+  background-image: linear-gradient(
+    90deg,
+    rgba(201, 162, 39, 0.35),
+    rgba(201, 162, 39, 0.9),
+    rgba(201, 162, 39, 0.35)
+  ) !important;
+}
+
+/* Keep carousel heading accent blue in the scrolling trust section */
+body.theme-light.palette-blue .why-carousel .wp-block-heading::after {
+  background: linear-gradient(
+    90deg,
+    rgba(15, 63, 119, 0.25),
+    rgba(15, 63, 119, 0.9),
+    rgba(15, 63, 119, 0.25)
+  ) !important;
+  opacity: 0.9 !important;
+}
+
+body.theme-light.palette-blue .why-carousel,
+body.theme-light.palette-blue .trust-section,
+body.theme-light.palette-blue .services-section {
+  background-color: #f7f9fc !important;
+  background-image:
+    radial-gradient(620px 220px at 12% 0%, rgba(var(--color-gold-rgb), 0.22), transparent 62%),
+    radial-gradient(560px 240px at 88% 100%, rgba(var(--color-gold-rgb), 0.18), transparent 64%),
+    linear-gradient(180deg, #f6f8ff 0%, #ffffff 60%);
+  border: 1px solid rgba(15, 63, 119, 0.18) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.10) !important;
+  padding: 24px !important;
+}
+
+body.theme-light.palette-blue .hero-wrap {
+  box-shadow:
+    0 24px 60px rgba(15, 23, 42, 0.12),
+    0 0 0 1px rgba(15, 23, 42, 0.05) !important;
+}
+
+body.theme-light.palette-blue .accent-title::after,
+body.theme-light.palette-blue .why-carousel .wp-block-heading::after {
+  background: linear-gradient(90deg, rgba(15, 63, 119, 0.2), rgba(15, 63, 119, 0.9), rgba(15, 63, 119, 0.2)) !important;
+}
+
+body.theme-light.palette-blue a {
+  color: rgba(15, 63, 119, 0.98);
+}
+
+body.theme-light.palette-blue .wp-block-button__link,
+body.theme-light.palette-blue .wp-element-button {
+  box-shadow: 0 10px 22px rgba(15, 63, 119, 0.20) !important;
+}
+
+body[data-theme="light"] #masthead .main-navigation a[href*="schedule"],
+body.theme-light #masthead .main-navigation a[href*="schedule"],
+body[data-theme="light"] #masthead .site-navigation a[href*="schedule"],
+body.theme-light #masthead .site-navigation a[href*="schedule"] {
+  color: #c9a227 !important;
+}
+
+body[data-theme="light"] #masthead .main-navigation a[href*="schedule"]:hover,
+body.theme-light #masthead .main-navigation a[href*="schedule"]:hover,
+body[data-theme="light"] #masthead .site-navigation a[href*="schedule"]:hover,
+body.theme-light #masthead .site-navigation a[href*="schedule"]:hover {
+  color: #8a6b12 !important;
+}
+
+/* ============================================================
+   BLACK / GOLD PALETTE TUNING (scoped per theme)
+============================================================ */
+/* Dark + Black */
+body.theme-dark.palette-black {
+  --color-header-bg: #0b0f1a;
+  --color-bg-main: #0b0f1a;
+  --color-bg-soft: #0f141f;
+  --color-bg-card: #111827;
+  --color-text-main: #e8ecf4;
+  --color-text-muted: rgba(232, 236, 244, 0.72);
+  --color-border-soft: rgba(232, 236, 244, 0.12);
+  --cta-bg: linear-gradient(
+    135deg,
+    rgba(199, 165, 94, 0.96) 0%,
+    rgba(227, 200, 125, 0.94) 35%,
+    rgba(187, 148, 64, 0.96) 70%,
+    rgba(145, 109, 33, 0.96) 100%
+  );
+}
+
+body.theme-dark.palette-black #masthead .site-header-row-container::after,
+body.theme-dark.palette-black .kadence-sticky-header-wrap .site-header-row-container::after {
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(201, 162, 39, 0),
+      rgba(201, 162, 39, 0.55),
+      rgba(201, 162, 39, 0)
+    ),
+    linear-gradient(
+      90deg,
+      rgba(201, 162, 39, 0.28),
+      rgba(255, 224, 120, 0.72),
+      rgba(201, 162, 39, 0.28)
+    ) !important;
+}
+
+body.theme-dark.palette-black .hero-wrap {
+  background-color: #0f141f !important;
+  background-image:
+    radial-gradient(820px 420px at 18% 8%, rgba(255, 255, 255, 0.04), transparent 62%),
+    radial-gradient(740px 380px at 85% 30%, rgba(201, 162, 39, 0.10), transparent 60%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0));
+  border-color: rgba(232, 236, 244, 0.08) !important;
+  box-shadow:
+    0 34px 80px rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(255, 255, 255, 0.04) !important;
+}
+
+body.theme-dark.palette-black .service-card,
+body.theme-dark.palette-black .why-card,
+body.theme-dark.palette-black .service-detail-card {
+  background: linear-gradient(180deg, #161c28, #0f141f) !important;
+  border: 1px solid rgba(201, 162, 39, 0.22) !important;
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(201, 162, 39, 0.08) !important;
+}
+
+body.theme-dark.palette-black .cta-section {
+  background: var(--cta-bg) !important;
+  border: 1px solid rgba(201, 162, 39, 0.55) !important;
+  box-shadow:
+    0 22px 54px rgba(0, 0, 0, 0.4),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08) !important;
+}
+
+body.theme-dark.palette-black .cta-section .cta-card,
+body.theme-dark.palette-black .wp-block-group.cta-card {
+  background: rgba(18, 28, 48, 0.55) !important;
+  color: rgba(255, 255, 255, 0.96) !important;
+  border: 1px solid rgba(201, 162, 39, 0.35) !important;
+}
+
+body.theme-dark.palette-black .cta-section .wp-block-heading,
+body.theme-dark.palette-black .cta-section p,
+body.theme-dark.palette-black .cta-section li {
+  color: rgba(255, 255, 255, 0.96) !important;
+}
+
+body.theme-dark.palette-black .wp-block-button__link,
+body.theme-dark.palette-black .wp-element-button {
+  background: rgba(18, 28, 48, 0.95) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(201, 162, 39, 0.55) !important;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35) !important;
+}
+
+body.theme-dark.palette-black .accent-title::after,
+body.theme-dark.palette-black .wp-block-heading::after {
+  background: linear-gradient(
+    90deg,
+    rgba(201, 162, 39, 0.35),
+    rgba(201, 162, 39, 0.9),
+    rgba(201, 162, 39, 0.35)
+  ) !important;
+  opacity: 0.95 !important;
+}
+
+/* Light + Black */
+body.theme-light.palette-black {
+  --color-header-bg: #ffffff;
+  --color-bg-main: #ffffff;
+  --color-bg-soft: #f7f8fb;
+  --color-bg-card: #ffffff;
+  --color-text-main: #0b1220;
+  --color-text-muted: rgba(11, 18, 32, 0.72);
+  --color-border-soft: rgba(15, 23, 42, 0.10);
+  --cta-bg: linear-gradient(
+    135deg,
+    rgba(199, 165, 94, 0.96) 0%,
+    rgba(227, 200, 125, 0.94) 35%,
+    rgba(187, 148, 64, 0.96) 70%,
+    rgba(145, 109, 33, 0.96) 100%
+  );
+}
+
+body.theme-light.palette-black #masthead .site-header-row-container::after,
+body.theme-light.palette-black .kadence-sticky-header-wrap .site-header-row-container::after {
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(15, 23, 42, 0),
+      rgba(15, 23, 42, 0.45),
+      rgba(15, 23, 42, 0)
+    ),
+    linear-gradient(
+      90deg,
+      rgba(15, 23, 42, 0.18),
+      rgba(0, 0, 0, 0.55),
+      rgba(15, 23, 42, 0.18)
+    ) !important;
+}
+
+body.theme-light.palette-black .hero-wrap {
+  background-color: #eef1f6 !important;
+  border-color: rgba(15, 23, 42, 0.16) !important;
+  box-shadow: 0 18px 46px rgba(15, 23, 42, 0.16) !important;
+}
+
+body.theme-light.palette-black .why-carousel,
+body.theme-light.palette-black .trust-section,
+body.theme-light.palette-black .services-section {
+  background-color: #eef2f7 !important;
+  background-image:
+    radial-gradient(620px 220px at 12% 0%, rgba(15, 23, 42, 0.12), transparent 62%),
+    radial-gradient(560px 240px at 88% 100%, rgba(0, 0, 0, 0.10), transparent 64%),
+    linear-gradient(180deg, #eef2f7 0%, #f7f8fb 60%);
+  border: 1px solid rgba(15, 23, 42, 0.18) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 18px 42px rgba(15, 23, 42, 0.16) !important;
+  padding: 24px !important;
+}
+
+body.theme-light.palette-black .service-card,
+body.theme-light.palette-black .why-card,
+body.theme-light.palette-black .service-detail-card {
+  background: #f7f8fb !important;
+  color: #0b1220 !important;
+  border: 1px solid rgba(15, 23, 42, 0.18) !important;
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.16) !important;
+}
+
+body.theme-light.palette-black .cta-section {
+  background: var(--cta-bg) !important;
+  border: 1px solid rgba(15, 23, 42, 0.22) !important;
+  box-shadow: 0 18px 46px rgba(15, 23, 42, 0.18) !important;
+}
+
+body.theme-light.palette-black .cta-section .cta-card,
+body.theme-light.palette-black .wp-block-group.cta-card {
+  background: rgba(246, 247, 250, 0.94) !important;
+  color: #0b1220 !important;
+  border: 1px solid rgba(15, 23, 42, 0.18) !important;
+}
+
+body.theme-light.palette-black .cta-section .wp-block-heading,
+body.theme-light.palette-black .cta-section p,
+body.theme-light.palette-black .cta-section li {
+  color: #0b1220 !important;
+}
+
+body.theme-light.palette-black .wp-block-button__link,
+body.theme-light.palette-black .wp-element-button {
+  background: #121c30 !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(15, 23, 42, 0.38) !important;
+  box-shadow: 0 12px 26px rgba(15, 23, 42, 0.24) !important;
+}
+
+body.theme-light.palette-black .accent-title::after,
+body.theme-light.palette-black .wp-block-heading::after {
+  background: linear-gradient(
+    90deg,
+    rgba(201, 162, 39, 0.35),
+    rgba(201, 162, 39, 0.9),
+    rgba(201, 162, 39, 0.35)
+  ) !important;
+  opacity: 0.95 !important;
+}
+
+/* ============================================================
+   HEADER / STICKY HEADER
+   - Do NOT override Kadence sticky positioning (was breaking stickiness)
+   - Paint a full-bleed background layer so the header never shows white
+     side-panels while boxed content stays centered.
+============================================================ */
+
+/* Keep the actual header elements transparent (Kadence controls sticky/fixed) */
+#masthead,
+#masthead .site-header-wrap,
+#masthead .site-header-inner-wrap,
+#masthead .site-header-row,
+.kadence-sticky-header,
+.kadence-sticky-header #masthead,
+.kadence-sticky-header #masthead .site-header-wrap,
+.kadence-sticky-header-wrap {
+  background: var(--color-header-bg) !important;
+}
+
+#masthead,
+.kadence-sticky-header #masthead {
+  left: 0;
+  right: 0;
+  width: 100%;
+}
+
+/* The row container is a safe anchor for our paint layer (doesn't become fixed) */
+#masthead .site-header-row-container,
+.kadence-sticky-header-wrap .site-header-row-container {
+  position: relative;
+  overflow: visible;
+  background: transparent !important;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+/* Full-bleed "paint layer" that spans the viewport width */
+#masthead .site-header-row-container::before,
+.kadence-sticky-header-wrap .site-header-row-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  background: var(--color-header-bg);
+  border-bottom: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+#masthead .site-header-row-container::after,
+.kadence-sticky-header-wrap .site-header-row-container::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 100vw;
+  transform: translateX(-50%);
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(201, 162, 39, 0),
+      rgba(201, 162, 39, 0.48),
+      rgba(201, 162, 39, 0)
+    ),
+    linear-gradient(
+      90deg,
+      rgba(201, 162, 39, 0.28),
+      rgba(255, 224, 120, 0.72),
+      rgba(201, 162, 39, 0.28)
+    );
+  background-size: 100% 2px, 100% 2px;
+  background-position: 0 0, 0 100%;
+  background-repeat: no-repeat;
+  opacity: 0.82;
+  box-shadow: 0 1px 0 rgba(255, 224, 120, 0.45);
+  z-index: 1;
+  pointer-events: none;
+}
+
+@keyframes headerShimmer {
+  0% { background-position: 0 0, 0 100%; }
+  100% { background-position: 0 0, 200% 100%; }
+}
+
+/* When sticky is active, make the header feel slightly heavier + add shadow */
+.item-is-fixed #masthead .site-header-row-container::before,
+.item-is-fixed .kadence-sticky-header-wrap .site-header-row-container::before {
+  background: rgba(11, 18, 32, 0.96);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.55);
+}
+
+/* Keep all header content above the paint layer */
+#masthead .site-header-row-container > *,
+.kadence-sticky-header-wrap .site-header-row-container > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Kill any hard-coded white backgrounds inside the header (this was the white sides) */
+#masthead .site-header-row,
+#masthead .site-header-row-container-inner,
+#masthead .site-header-row-container,
+#masthead .site-main-header-wrap,
+#masthead .site-header-section,
+#masthead .site-header-item,
+#masthead .site-branding,
+#masthead .site-branding a,
+#masthead .main-navigation,
+#masthead .site-navigation,
+.kadence-sticky-header-wrap .site-header-row,
+.kadence-sticky-header-wrap .site-header-row-container-inner,
+.kadence-sticky-header-wrap .site-header-row-container,
+.kadence-sticky-header-wrap .site-main-header-wrap,
+.kadence-sticky-header-wrap .site-header-section,
+.kadence-sticky-header-wrap .site-header-item,
+.kadence-sticky-header-wrap .site-branding,
+.kadence-sticky-header-wrap .site-branding a,
+.kadence-sticky-header-wrap .main-navigation,
+.kadence-sticky-header-wrap .site-navigation {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border-top: 0 !important;
+  border-bottom: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Safety: ensure the sticky wrapper spans the viewport */
+.item-is-fixed .kadence-sticky-header-wrap {
+  left: 0;
+  right: 0;
+}
+
+/* Fallback sticky behavior if Kadence sticky header is not enabled */
+body:not(.kadence-sticky-header) #masthead {
+  position: sticky;
+  top: var(--wp-admin--admin-bar--height, 0px);
+  z-index: 9999;
+}
+
+/* ============================================================
+   THEME BINDINGS
+   Ensures components actually use the CSS variables.
+   (Dark mode only works when elements reference these vars.)
+============================================================ */
+
+/* Global surfaces */
+:root {
+  --page-bg-image: url("https://goldstandardinsgroup.com/wp-content/uploads/2026/02/gold-bg.png");
+}
+
+html, body {
+  background-color: var(--color-bg-main);
+  background-image: var(--page-bg-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: var(--color-text-main);
+}
+
+.wp-site-blocks,
+#page,
+#wrapper,
+.site,
+.site-container,
+.content-wrap,
+.entry-content-wrap,
+.content-container {
+  background-color: transparent;
+  background-image: none;
+  color: var(--color-text-main);
+}
+
+/* Base typography */
+body,
+p,
+li,
+dt,
+dd,
+blockquote,
+.entry-content {
+  color: var(--color-text-main);
+}
+
+.entry-content p,
+.entry-content li {
+  color: var(--color-text-main);
+}
+
+.has-text-color {
+  /* allow WP explicit colors to win */
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6,
+.wp-block-heading {
+  color: var(--color-text-main);
+}
+
+/* Links (keep brand-y, not neon) */
+a {
+  color: rgba(var(--color-primary-rgb), 0.98);
+}
+
+body:not([data-theme="light"]):not(.theme-light) a {
+  color: rgba(230, 233, 242, 0.92);
+}
+
+/* Common "card" surfaces */
+.wp-block-group,
+.wp-block-cover,
+.wp-block-media-text,
+.wp-block-column,
+.wp-block-table,
+.wp-block-quote,
+.wp-block-pullquote {
+  color: var(--color-text-main);
+}
+
+/* Make framed sections + card-ish groups follow theme */
+body:not([data-theme="light"]):not(.theme-light) .wp-block-group:not(.hero-wrap):not(.hero-card):not(.cta-section):not(.service-detail-grid) {
+  color: var(--color-text-main);
+}
+
+/* Inputs */
+body:not([data-theme="light"]):not(.theme-light) input,
+body:not([data-theme="light"]):not(.theme-light) textarea,
+body:not([data-theme="light"]):not(.theme-light) select {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--color-text-main);
+  border-color: rgba(230, 233, 242, 0.14);
+}
+
+/* Form input text + placeholder colors (Gutena + generic) */
+body:not([data-theme="light"]):not(.theme-light) input,
+body:not([data-theme="light"]):not(.theme-light) textarea,
+body:not([data-theme="light"]):not(.theme-light) select,
+body:not([data-theme="light"]):not(.theme-light) .gutena-forms input,
+body:not([data-theme="light"]):not(.theme-light) .gutena-forms textarea,
+body:not([data-theme="light"]):not(.theme-light) .gutena-forms select {
+  color: var(--color-text-main) !important;
+  background-color: rgba(255, 255, 255, 0.06) !important;
+  border-color: rgba(230, 233, 242, 0.14) !important;
+}
+
+body:not([data-theme="light"]):not(.theme-light) input::placeholder,
+body:not([data-theme="light"]):not(.theme-light) textarea::placeholder,
+body:not([data-theme="light"]):not(.theme-light) .gutena-forms input::placeholder,
+body:not([data-theme="light"]):not(.theme-light) .gutena-forms textarea::placeholder {
+  color: rgba(230, 233, 242, 0.70) !important;
+}
+
+body[data-theme="light"] input,
+body.theme-light input,
+body[data-theme="light"] textarea,
+body.theme-light textarea,
+body[data-theme="light"] select,
+body.theme-light select,
+body[data-theme="light"] .gutena-forms input,
+body.theme-light .gutena-forms input,
+body[data-theme="light"] .gutena-forms textarea,
+body.theme-light .gutena-forms textarea,
+body[data-theme="light"] .gutena-forms select,
+body.theme-light .gutena-forms select {
+  color: #0b1220 !important;
+  background-color: #ffffff !important;
+  border-color: rgba(15, 23, 42, 0.14) !important;
+}
+
+body[data-theme="light"] input::placeholder,
+body.theme-light input::placeholder,
+body[data-theme="light"] textarea::placeholder,
+body.theme-light textarea::placeholder,
+body[data-theme="light"] .gutena-forms input::placeholder,
+body.theme-light .gutena-forms input::placeholder,
+body[data-theme="light"] .gutena-forms textarea::placeholder,
+body.theme-light .gutena-forms textarea::placeholder {
+  color: rgba(15, 23, 42, 0.55) !important;
+}
+
+/* Autofill color fix (Safari/Chrome) */
+body:not([data-theme="light"]):not(.theme-light) input:-webkit-autofill,
+body:not([data-theme="light"]):not(.theme-light) textarea:-webkit-autofill,
+body:not([data-theme="light"]):not(.theme-light) select:-webkit-autofill,
+body:not([data-theme="light"]):not(.theme-light) input:-webkit-autofill:hover,
+body:not([data-theme="light"]):not(.theme-light) textarea:-webkit-autofill:hover,
+body:not([data-theme="light"]):not(.theme-light) select:-webkit-autofill:hover,
+body:not([data-theme="light"]):not(.theme-light) input:-webkit-autofill:focus,
+body:not([data-theme="light"]):not(.theme-light) textarea:-webkit-autofill:focus,
+body:not([data-theme="light"]):not(.theme-light) select:-webkit-autofill:focus,
+body:not([data-theme="light"]):not(.theme-light) .gutena-forms input:-webkit-autofill,
+body:not([data-theme="light"]):not(.theme-light) .gutena-forms textarea:-webkit-autofill,
+body:not([data-theme="light"]):not(.theme-light) .gutena-forms select:-webkit-autofill {
+  -webkit-text-fill-color: var(--color-text-main) !important;
+  caret-color: var(--color-text-main) !important;
+  box-shadow: 0 0 0 1000px rgba(255, 255, 255, 0.06) inset !important;
+  transition: background-color 9999s ease-in-out 0s;
+}
+
+body[data-theme="light"] input:-webkit-autofill,
+body.theme-light input:-webkit-autofill,
+body[data-theme="light"] textarea:-webkit-autofill,
+body.theme-light textarea:-webkit-autofill,
+body[data-theme="light"] select:-webkit-autofill,
+body.theme-light select:-webkit-autofill,
+body[data-theme="light"] .gutena-forms input:-webkit-autofill,
+body.theme-light .gutena-forms input:-webkit-autofill,
+body[data-theme="light"] .gutena-forms textarea:-webkit-autofill,
+body.theme-light .gutena-forms textarea:-webkit-autofill,
+body[data-theme="light"] .gutena-forms select:-webkit-autofill,
+body.theme-light .gutena-forms select:-webkit-autofill {
+  -webkit-text-fill-color: #0b1220 !important;
+  caret-color: #0b1220 !important;
+  box-shadow: 0 0 0 1000px #ffffff inset !important;
+  transition: background-color 9999s ease-in-out 0s;
+}
+
+/* ============================================================
+   DARK THEME: COMPONENT OVERRIDES
+   Fixes the "only some things changed" issue by overriding
+   hard-coded light colors in key components.
+============================================================ */
+
+/* Header nav link colors */
+body:not([data-theme="light"]):not(.theme-light) #masthead .main-navigation a,
+body:not([data-theme="light"]):not(.theme-light) #masthead .site-navigation a,
+body:not([data-theme="light"]):not(.theme-light) .site-header .main-navigation a,
+body:not([data-theme="light"]):not(.theme-light) .site-header .site-navigation a {
+  color: rgba(230, 233, 242, 0.92) !important;
+}
+
+body:not([data-theme="light"]):not(.theme-light) #masthead .main-navigation a:hover,
+body:not([data-theme="light"]):not(.theme-light) #masthead .site-navigation a:hover,
+body:not([data-theme="light"]):not(.theme-light) .site-header .main-navigation a:hover,
+body:not([data-theme="light"]):not(.theme-light) .site-header .site-navigation a:hover {
+  color: #ffffff !important;
+}
+
+:root {
+  --sticky-header-offset: 72px;
+}
+
+.wp-site-blocks > .hero-wrap:first-child,
+.wp-site-blocks > .wp-block-group.hero-wrap:first-child {
+  margin-top: var(--sticky-header-offset) !important;
+}
+
+@media (max-width: 781px) {
+  :root {
+    --sticky-header-offset: 56px;
+  }
+
+  .wp-site-blocks > .hero-wrap:first-child,
+  .wp-site-blocks > .wp-block-group.hero-wrap:first-child {
+    margin-top: var(--sticky-header-offset) !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  :root {
+    --sticky-header-offset: 64px;
+  }
+}
+
+.wp-site-blocks > .hero-wrap:first-child + * {
+  margin-top: 64px !important;
+  padding-top: 10px !important;
+}
+
+@media (max-width: 781px) {
+  .wp-site-blocks > .hero-wrap:first-child + * {
+    margin-top: 40px !important;
+    padding-top: 8px !important;
+  }
+}
+
+.wp-block-html iframe,
+.wp-block-html object,
+.wp-block-html embed {
+  max-width: 100% !important;
+  border-radius: 16px !important;
+  overflow: hidden !important;
+}
+
+body:not([data-theme="light"]):not(.theme-light) .wp-block-html iframe,
+body:not([data-theme="light"]):not(.theme-light) .wp-block-html object,
+body:not([data-theme="light"]):not(.theme-light) .wp-block-html embed {
+  box-shadow:
+    0 22px 60px rgba(0, 0, 0, 0.55),
+    0 10px 26px rgba(0, 0, 0, 0.35) !important;
+}
+
+/* Global page surfaces in dark mode (prevents light text on white sections) */
+body:not([data-theme="light"]):not(.theme-light) {
+  background: var(--color-bg-main) !important;
+  color: var(--color-text-main) !important;
+}
+
+body:not([data-theme="light"]):not(.theme-light) .wp-site-blocks,
+body:not([data-theme="light"]):not(.theme-light) #page,
+body:not([data-theme="light"]):not(.theme-light) #wrapper,
+body:not([data-theme="light"]):not(.theme-light) .site,
+body:not([data-theme="light"]):not(.theme-light) .site-container,
+body:not([data-theme="light"]):not(.theme-light) .content-wrap,
+body:not([data-theme="light"]):not(.theme-light) .entry-content-wrap,
+body:not([data-theme="light"]):not(.theme-light) .content-container {
+  background: var(--color-bg-main) !important;
+  color: var(--color-text-main) !important;
+}
+
+/* Neutralize common inline white backgrounds from the block editor */
+body:not([data-theme="light"]):not(.theme-light) .has-background,
+body:not([data-theme="light"]):not(.theme-light) [style*="background-color:#fff"],
+body:not([data-theme="light"]):not(.theme-light) [style*="background-color: #fff"],
+body:not([data-theme="light"]):not(.theme-light) [style*="background-color:#ffffff"],
+body:not([data-theme="light"]):not(.theme-light) [style*="background-color: #ffffff"],
+body:not([data-theme="light"]):not(.theme-light) [style*="background: #fff"],
+body:not([data-theme="light"]):not(.theme-light) [style*="background: #ffffff"] {
+  background-color: transparent !important;
+}
+
+body:not([data-theme="light"]):not(.theme-light) p,
+body:not([data-theme="light"]):not(.theme-light) li,
+body:not([data-theme="light"]):not(.theme-light) dt,
+body:not([data-theme="light"]):not(.theme-light) dd,
+body:not([data-theme="light"]):not(.theme-light) blockquote,
+body:not([data-theme="light"]):not(.theme-light) .entry-content,
+body:not([data-theme="light"]):not(.theme-light) .wp-block-heading {
+  color: var(--color-text-main) !important;
+}
+
+/* HERO: make text readable + match dark surfaces */
+body:not([data-theme="light"]):not(.theme-light) .hero-wrap {
+  background-color: #0f172a !important;
+
+  /* Replace the light-theme texture/spotlights with a dark-friendly version */
+  background-image:
+    radial-gradient(820px 420px at 18% 8%, rgba(230, 233, 242, 0.06), transparent 62%),
+    radial-gradient(740px 380px at 85% 30%, rgba(201, 162, 39, 0.10), transparent 60%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.22), rgba(0, 0, 0, 0));
+  background-size: auto, auto, 100% 100%;
+  background-position: center, center, 0 0;
+
+  border-color: rgba(230, 233, 242, 0.08) !important;
+  box-shadow:
+    0 34px 80px rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+body:not([data-theme="light"]):not(.theme-light) .hero-wrap > .wp-block-group__inner-container > .hero-card,
+body:not([data-theme="light"]):not(.theme-light) .wp-block-group.hero-wrap > .wp-block-group__inner-container > .wp-block-group.hero-card {
+  background:
+    linear-gradient(var(--color-bg-card), var(--color-bg-card)) padding-box,
+    linear-gradient(
+      120deg,
+      rgba(201, 162, 39, 0.08) 0%,
+      rgba(201, 162, 39, 0.26) 26%,
+      rgba(255, 226, 130, 0.78) 50%,
+      rgba(201, 162, 39, 0.26) 74%,
+      rgba(201, 162, 39, 0.08) 100%
+    ) border-box;
+  border: 4px solid transparent;
+  background-clip: padding-box, border-box;
+  box-shadow:
+    0 0 0 1px rgba(201, 162, 39, 0.05),
+    0 0 22px rgba(201, 162, 39, 0.12),
+    0 16px 38px rgba(201, 162, 39, 0.12),
+    0 26px 70px rgba(0, 0, 0, 0.55),
+    0 10px 26px rgba(0, 0, 0, 0.35);
+  background-size: 100% 100%, 220% 220%;
+  background-position: 0 0, 50% 0;
+  animation: heroBorderOrbit 9s linear infinite reverse;
+}
+
+@keyframes heroBorderOrbit {
+  0% { background-position: 0 0, 50% 0; }
+  25% { background-position: 0 0, 0 50%; }
+  50% { background-position: 0 0, 50% 100%; }
+  75% { background-position: 0 0, 100% 50%; }
+  100% { background-position: 0 0, 50% 0; }
+}
+
+
+body:not([data-theme="light"]):not(.theme-light) .hero-wrap .wp-block-heading,
+body:not([data-theme="light"]):not(.theme-light) .hero-wrap p,
+body:not([data-theme="light"]):not(.theme-light) .hero-wrap li,
+body:not([data-theme="light"]):not(.theme-light) .hero-wrap .wp-block-button__link {
+  color: var(--color-text-main) !important;
+}
+
+body:not([data-theme="light"]):not(.theme-light) .hero-business-name,
+body:not([data-theme="light"]):not(.theme-light) .hero-profile__kicker {
+  color: rgba(230, 233, 242, 0.72) !important;
+}
+
+body:not([data-theme="light"]):not(.theme-light) .hero-profile__title {
+  color: rgba(230, 233, 242, 0.72) !important;
+}
+
+body:not([data-theme="light"]):not(.theme-light) .hero-wrap .wp-block-columns > .wp-block-column:first-child {
+  border-right-color: rgba(201, 162, 39, 0.22);
+}
+
+/* Services/Trust/CTA frames: remove light wash + set dark surfaces */
+body:not([data-theme="light"]):not(.theme-light) .gold-frame-left,
+body:not([data-theme="light"]):not(.theme-light) .gold-frame-right {
+  background-color: rgba(17, 26, 46, 0.72) !important;
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0)) !important;
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0));
+  border-top-color: rgba(201, 162, 39, 0.18);
+  border-bottom-color: rgba(201, 162, 39, 0.10);
+}
+
+body:not([data-theme="light"]):not(.theme-light) .gold-frame-left {
+  border-left-color: rgba(201, 162, 39, 0.55);
+  border-right-color: rgba(230, 233, 242, 0.08);
+}
+
+body:not([data-theme="light"]):not(.theme-light) .gold-frame-right {
+  border-right-color: rgba(201, 162, 39, 0.55);
+  border-left-color: rgba(230, 233, 242, 0.08);
+}
+
+/* Service cards */
+body:not([data-theme="light"]):not(.theme-light) .service-card,
+body:not([data-theme="light"]):not(.theme-light) .service-detail-card {
+  background: rgba(17, 26, 46, 0.72);
+  background-image:
+    radial-gradient(820px 420px at 18% 18%, rgba(255, 255, 255, 0.04), transparent 62%),
+    radial-gradient(740px 380px at 86% 28%, rgba(201, 162, 39, 0.08), transparent 64%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0));
+  border: 1px solid rgba(230, 233, 242, 0.10);
+  box-shadow:
+    0 26px 70px rgba(0, 0, 0, 0.55),
+    0 10px 26px rgba(0, 0, 0, 0.35);
+}
+
+body:not([data-theme="light"]):not(.theme-light) .service-detail-card p,
+body:not([data-theme="light"]):not(.theme-light) .service-detail-card li {
+  color: rgba(230, 233, 242, 0.84) !important;
+}
+
+body:not([data-theme="light"]):not(.theme-light) .service-detail-card .wp-block-heading {
+  color: var(--color-text-main) !important;
+  text-shadow: none !important;
+}
+
+/* Service detail grid wrapper */
+body:not([data-theme="light"]):not(.theme-light) .service-detail-grid > .wp-block-group__inner-container {
+  background: rgba(17, 26, 46, 0.50) !important;
+  border-color: rgba(230, 233, 242, 0.10) !important;
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.55) !important;
+}
+
+/* CTA section */
+body:not([data-theme="light"]):not(.theme-light) .cta-section {
+  background: var(--cta-bg);
+  border: 1px solid var(--cta-border);
+  box-shadow:
+    0 0 0 1px rgba(255, 232, 160, 0.12),
+    0 14px 40px rgba(0, 0, 0, 0.28);
+}
+
+body:not([data-theme="light"]):not(.theme-light) .cta-section .cta-card,
+body:not([data-theme="light"]):not(.theme-light) .wp-block-group.cta-card {
+  background: rgba(12, 20, 36, 0.48) !important;
+  border: 1px solid rgba(230, 233, 242, 0.16) !important;
+  box-shadow:
+    0 18px 38px rgba(0, 0, 0, 0.32),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04) !important;
+  background-image: none !important;
+}
+
+body:not([data-theme="light"]):not(.theme-light) .cta-section p {
+  color: var(--cta-subtext) !important;
+}
+
+
+/* Button polish (shared): keep motion consistent across primary + CTA */
+.btn-primary a,
+.btn-primary .wp-block-button__link,
+.btn-primary .wp-element-button,
+.cta-section .wp-block-button__link,
+.cta-section .wp-element-button {
+  display: inline-block;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, outline-color 0.2s ease;
+}
+
+.btn-primary:hover a,
+.btn-primary:hover .wp-block-button__link,
+.btn-primary:hover .wp-element-button {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Accent line under specific headings */
+.accent-title {
+  position: relative;
+  padding-bottom: 0.35em; /* room for the line */
+}
+
+.accent-title::after {
+  content: "";
+  display: block;
+  width: 72px;
+  height: 4px;
+  margin-top: 12px;
+  border-radius: 999px;
+  background: var(--accent-divider);
+  opacity: 0.95;
+  transition: width 0.25s ease, opacity 0.25s ease;
+}
+
+/* Make the underline feel more premium/intentional in sections using accent-wrap */
+.accent-wrap .accent-title::after {
+  width: 84px;
+}
+
+/* Expand underline when the USER is anywhere in the section (not just hovering the text) */
+.cta-section:hover .accent-title::after,
+.cta-section:focus-within .accent-title::after,
+.accent-wrap:hover .accent-title::after,
+.accent-wrap:focus-within .accent-title::after {
+  width: 128px;
+  opacity: 1;
+}
+
+/* HERO background: subtle texture + soft spotlight
+   Goal: hero looks distinct (no section-underline treatment), has depth, and avoids mixed square/rounded corners.
+   Usage in editor:
+   - OUTER Group: Additional CSS class = hero-wrap
+   - INNER Group: Additional CSS class = hero-card
+*/
+.wp-block-group.hero-wrap,
+.hero-wrap {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  padding: 12px; /* tighter outer frame: reduce vertical dead space */
+  padding-top: 12px;
+
+  /* Static layered texture: soft spotlights + subtle dot grid */
+  background-color: #f6f8ff;
+  background-image:
+    /* Primary (navy) soft spotlights (slightly softer/less opaque) */
+    radial-gradient(820px 420px at 18% 8%, rgba(var(--color-primary-rgb), 0.06), transparent 62%),
+    radial-gradient(740px 380px at 85% 30%, rgba(var(--color-primary-rgb), 0.045), transparent 60%),
+
+    /* Gold warmth (a touch richer so the hero ties into the gold accents) */
+    radial-gradient(620px 320px at 86% 16%, rgba(var(--color-gold-rgb), 0.13), transparent 62%),
+    radial-gradient(520px 280px at 20% 92%, rgba(var(--color-gold-rgb), 0.09), transparent 64%),
+
+    /* Subtle dot grid + gentle top-to-bottom shading */
+    radial-gradient(circle at 1px 1px, rgba(15, 23, 42, 0.042) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(15, 23, 42, 0.028), rgba(15, 23, 42, 0)),
+
+    /* Faint gold sweep so it doesn't read as only blue */
+    linear-gradient(110deg, rgba(var(--color-gold-rgb), 0.06), rgba(var(--color-gold-rgb), 0) 55%);
+  background-size: auto, auto, auto, auto, 26px 26px, 100% 100%, 100% 100%;
+  background-position: center, center, center, center, 0 0, 0 0, 0 0;
+
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  box-shadow:
+    0 30px 70px rgba(15, 23, 42, 0.18),
+    0 0 0 1px rgba(15, 23, 42, 0.03);
+}
+
+/* Light theme hero wrap: remove the striped texture + add crisp gold glow */
+body[data-theme="light"] .hero-wrap,
+body.theme-light .hero-wrap {
+  background-color: #f7f8fb !important;
+  background-image:
+    radial-gradient(720px 260px at 12% 8%, rgba(var(--color-gold-rgb), 0.20), transparent 62%),
+    radial-gradient(640px 300px at 86% 16%, rgba(var(--color-gold-rgb), 0.16), transparent 64%),
+    linear-gradient(180deg, rgba(15, 23, 42, 0.04), rgba(15, 23, 42, 0));
+  background-size: auto, auto, 100% 100%;
+  background-position: center, center, 0 0;
+}
+
+/* HERO surface: style ONLY the OUTER hero-card directly under hero-wrap
+   (prevents nested groups inside columns that may also have `hero-card` from inheriting these styles)
+*/
+.hero-wrap > .wp-block-group__inner-container > .hero-card,
+.wp-block-group.hero-wrap > .wp-block-group__inner-container > .wp-block-group.hero-card {
+  position: relative;
+  z-index: 2;
+  border-radius: 16px;
+  background:
+    linear-gradient(var(--color-bg-card), var(--color-bg-card)) padding-box,
+    linear-gradient(
+      120deg,
+      rgba(201, 162, 39, 0.05) 0%,
+      rgba(201, 162, 39, 0.16) 30%,
+      rgba(255, 224, 120, 0.45) 50%,
+      rgba(201, 162, 39, 0.16) 70%,
+      rgba(201, 162, 39, 0.05) 100%
+    ) border-box;
+  border: 4px solid transparent;
+  background-clip: padding-box, border-box;
+  box-shadow:
+    0 0 0 1px rgba(201, 162, 39, 0.05),
+    0 0 18px rgba(201, 162, 39, 0.10),
+    0 14px 32px rgba(201, 162, 39, 0.10),
+    0 22px 58px rgba(15, 23, 42, 0.11),
+    0 6px 18px rgba(15, 23, 42, 0.07);
+  background-size: 100% 100%, 100% 100%;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+@keyframes goldShimmer {
+  0% { background-position: 0% 50%, 0% 50%; }
+  100% { background-position: 0% 50%, 200% 50%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-card {
+    animation: none;
+  }
+  #masthead .site-header-row-container::after,
+  .kadence-sticky-header-wrap .site-header-row-container::after {
+    animation: none;
+  }
+}
+
+/* HERO layout padding lives on the columns container */
+.hero-wrap .wp-block-columns {
+  position: relative;
+  gap: 0;                 /* IMPORTANT: gutter is handled by column padding */
+  padding: 18px 34px; /* tighter top/bottom without feeling cramped */
+  align-items: stretch;
+}
+
+/* Create gutter explicitly so divider is always correct */
+.hero-wrap .wp-block-columns > .wp-block-column {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 0 2.25rem;
+}
+
+/* Divider belongs on the left column edge (true gutter) */
+.hero-wrap .wp-block-columns > .wp-block-column:first-child {
+  border-right: 1px solid rgba(201, 162, 39, 0.24);
+  padding-left: 0;        /* remove outer edge padding */
+}
+
+.hero-wrap .wp-block-columns > .wp-block-column:last-child {
+  padding-right: 0;       /* remove outer edge padding */
+}
+
+/* Make both columns stretch to the same height */
+.hero-wrap .wp-block-columns > .wp-block-column {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+/* If the left column contains a nested `.hero-card` group (common in your pattern),
+   neutralize it so it doesn't create a "card inside a card".
+*/
+.hero-wrap .wp-block-column .wp-block-group.hero-card {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 0 !important; /* override inline padding from the block editor */
+}
+
+/* Ensure padding is driven by the columns container (not a nested group) */
+.hero-wrap .wp-block-column .wp-block-group.hero-card > .wp-block-group__inner-container {
+  padding: 0 !important;
+}
+
+/* HERO profile module (right column)
+   Usage in editor:
+   - RIGHT column Group (wraps image + name + title): hero-profile
+   - Image block: hero-profile__img
+   - Name text block: hero-profile__name
+   - Title text block: hero-profile__title
+   - Optional small label: hero-profile__kicker
+*/
+.hero-profile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  /* Fill the column height so the right side doesn't feel like dead space */
+  height: 100%;
+
+  /* Keep it integrated with the hero surface (NOT a second card) */
+  padding: 6px 10px;
+
+  /* Layout + alignment */
+  align-items: flex-start;
+  justify-content: center;
+  text-align: left;
+
+  /* No panel chrome here */
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+
+  /* Make the advisor block feel intentionally placed */
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Soft halo behind the IMAGE area only (keeps it premium without becoming a card) */
+.hero-profile::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 46%;
+
+  /* Make the halo feel like a soft glow (not a faint box/panel) */
+  width: min(560px, 96%);
+  height: 78%;
+  transform: translate(-50%, -50%);
+  border-radius: 999px; /* removes any "boxy" edges */
+
+  background:
+    radial-gradient(420px 300px at 38% 38%, rgba(var(--color-primary-rgb), 0.10), transparent 66%),
+    radial-gradient(420px 300px at 62% 72%, rgba(var(--color-gold-rgb), 0.10), transparent 68%);
+
+  opacity: 0.48;
+  filter: blur(22px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-profile > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* HERO (right side): remove any accidental panel/box backgrounds that may be set by nested Groups */
+.hero-wrap .wp-block-columns > .wp-block-column:last-child {
+  background: transparent !important;
+}
+
+.hero-wrap .wp-block-columns > .wp-block-column:last-child .wp-block-group,
+.hero-wrap .wp-block-columns > .wp-block-column:last-child .wp-block-group__inner-container {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  outline: 0 !important;
+}
+
+/* But keep the actual advisor module's layout intact (it's already transparent) */
+.hero-wrap .wp-block-columns > .wp-block-column:last-child .hero-profile {
+  background: transparent !important;
+}
+
+/* If/when the layout stacks, hide the divider */
+@media (max-width: 781px) {
+  .hero-wrap .wp-block-columns {
+    padding: 14px 14px; /* tighter hero on mobile */
+  }
+
+  .hero-wrap .wp-block-columns > .wp-block-column {
+    padding: 0; /* stacked layout: no horizontal gutter */
+  }
+
+  .hero-wrap .wp-block-columns > .wp-block-column:first-child {
+    border-right: none;
+    padding-bottom: 18px;
+    margin-bottom: 18px;
+    border-bottom: 1px solid rgba(201, 162, 39, 0.20);
+  }
+}
+
+.hero-profile__kicker {
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: rgba(15, 23, 42, 0.58);
+  margin: 0 0 6px;
+}
+
+/* Advisor image: intentional crop + premium frame */
+.hero-profile__img {
+  width: 100%;
+  max-width: 520px;
+  margin: 6px 0 10px;
+
+  /* Allow full image without forced crop */
+  aspect-ratio: auto;
+  max-height: 420px;
+  overflow: hidden;
+  border-radius: 20px;
+
+  border: 1px solid rgba(15, 23, 42, 0.10);
+  box-shadow:
+    0 22px 52px rgba(15, 23, 42, 0.16),
+    0 8px 22px rgba(15, 23, 42, 0.10);
+  position: relative;
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.hero-profile__img img {
+  width: 100% !important;
+  height: auto !important;
+  object-fit: contain;
+  object-position: center center;
+  display: block;
+  border-radius: 18px;
+}
+
+@media (min-width: 1024px) {
+  .hero-profile__img {
+    max-width: 420px;
+    max-height: 360px;
+  }
+}
+
+/* tiny gold accent (top-left corner) */
+.hero-profile__img::before {
+  content: "";
+  position: absolute;
+  width: 34px;
+  height: 34px;
+  left: -1px;
+  top: -1px;
+  border-top: 3px solid rgba(201, 162, 39, 0.70);
+  border-left: 3px solid rgba(201, 162, 39, 0.70);
+  border-top-left-radius: 18px;
+  pointer-events: none;
+}
+
+.hero-profile__name {
+  font-size: 1.25rem;
+  font-weight: 900;
+  letter-spacing: -0.012em;
+  color: var(--color-text-main);
+  margin: 4px 0 0;
+  line-height: 1.15;
+  padding-top: 2px;
+}
+
+.hero-profile__title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: rgba(15, 23, 42, 0.68);
+  margin: 0;
+  max-width: 46ch;
+  line-height: 1.35;
+}
+
+.hero-profile__name::after {
+  content: "";
+  display: block;
+  width: 72px;
+  height: 3px;
+  margin: 10px 0 0; /* left-aligned */
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(201, 162, 39, 0.85), rgba(201, 162, 39, 0.10));
+  opacity: 0.95;
+}
+
+/* Keep the stack tight even if WP inserts block margins */
+.hero-profile > * {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* Responsive: on smaller screens, keep image from feeling oversized */
+@media (max-width: 781px) {
+  .hero-profile {
+    padding: 12px 6px;
+    align-items: center;
+    text-align: center;
+  }
+  .hero-profile__img {
+    max-width: 100%;
+    aspect-ratio: auto;
+    min-height: 0;
+    height: auto;
+  }
+  .hero-profile__img img {
+    height: auto !important;
+    object-fit: contain;
+    object-position: center center !important;
+  }
+  .hero-profile__name::after {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* Gold side-rule frame utilities (use on section wrapper Groups)
+   - Use `.gold-frame-left` for left-side gold rule
+   - Use `.gold-frame-right` for right-side gold rule
+*/
+.gold-frame-left,
+.gold-frame-right {
+  position: relative;
+  border-radius: 18px;
+  box-sizing: border-box;
+
+  /* Soft gold frame for clearer section separation */
+  border-top: 1px solid rgba(201, 162, 39, 0.22);
+  border-bottom: 1px solid rgba(201, 162, 39, 0.14);
+
+  /* Very subtle gold wash so it reads as a section (still white/clean) */
+  background-image: linear-gradient(
+    180deg,
+    rgba(201, 162, 39, 0.04),
+    rgba(255, 255, 255, 0)
+  );
+}
+
+.gold-frame-left {
+  border-left: 4px solid rgba(var(--color-primary-rgb), 0.92);
+  border-right: 1px solid rgba(201, 162, 39, 0.18);
+  box-sizing: border-box;
+}
+
+.gold-frame-right {
+  border-right: 4px solid rgba(var(--color-primary-rgb), 0.92);
+  border-left: 1px solid rgba(201, 162, 39, 0.18);
+  box-sizing: border-box;
+}
+
+/* Trust / Why Choose Us emphasis (gold framed, not just a left rule)
+   NOTE: This only applies if the wrapper Group has class `trust-section`.
+   Add it in the Block Editor (Group > Advanced > Additional CSS class(es)).
+*/
+/* Trust / Why Choose Us emphasis
+   Add `trust-section` + `gold-frame-left` to the wrapper Group.
+*/
+.trust-section {
+  /* no-op wrapper so old markup keeps working */
+}
+
+/* Trust section reviews: cleaner layout + card treatment */
+.trust-section .wp-block-columns {
+  align-items: center;
+  gap: 28px;
+}
+
+.trust-section .wp-block-column {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+.trust-section .wp-block-html,
+.trust-section .wp-block-embed {
+  background: rgba(12, 20, 36, 0.55);
+  border: 1px solid rgba(230, 233, 242, 0.12);
+  border-radius: 18px;
+  padding: 16px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+}
+
+.trust-section .wp-block-html iframe,
+.trust-section .wp-block-embed iframe {
+  width: 100% !important;
+  max-width: 100% !important;
+  border-radius: 14px;
+  display: block;
+}
+
+body[data-theme="light"], body.theme-light .trust-section .wp-block-html,
+body[data-theme="light"], body.theme-light .trust-section .wp-block-embed {
+  background: #ffffff;
+  color: #0b1220;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.12);
+}
+
+@media (max-width: 1023px) {
+  .trust-section .wp-block-columns {
+    gap: 22px;
+  }
+
+  .trust-section .wp-block-html,
+  .trust-section .wp-block-embed {
+    padding: 14px;
+  }
+}
+
+@media (max-width: 781px) {
+  .trust-section .wp-block-columns {
+    gap: 18px;
+  }
+
+  .trust-section .wp-block-html,
+  .trust-section .wp-block-embed {
+    padding: 12px;
+  }
+}
+
+/* Services section emphasis
+   Add `services-section` + `gold-frame-left` to the Services wrapper Group.
+*/
+.services-section {
+  /* no-op wrapper so the class is explicit */
+}
+
+/* CTA emphasis (gold + blue, clearer separation)
+   Apply by adding class `cta-section` to the CTA OUTER Group.
+   Optional (nice): add `cta-card` to the INNER Group.
+*/
+.cta-section {
+  position: relative;
+  border-radius: 20px;
+  padding: 22px; /* outer frame thickness */
+
+  /* Stronger "section boundary" so it doesn't feel washed out */
+  border: 1px solid var(--cta-border);
+
+  /* Subtle blue + gold spotlights (slightly stronger than before) */
+  background: var(--cta-bg);
+  box-shadow:
+    0 0 0 1px rgba(255, 232, 160, 0.12),
+    0 14px 40px rgba(0, 0, 0, 0.28);
+}
+
+/* CTA inner surface */
+.cta-section .cta-card,
+.wp-block-group.cta-card {
+  border-radius: 16px;
+  background: rgba(12, 20, 36, 0.48);
+  border: 1px solid rgba(230, 233, 242, 0.16);
+  padding: 34px 34px;
+  box-shadow:
+    0 18px 38px rgba(0, 0, 0, 0.32),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+  background-image: none;
+}
+
+/* CTA heading: give it structure without needing extra blocks/classes */
+.cta-section .wp-block-heading {
+  text-align: center;
+  letter-spacing: -0.01em;
+  font-weight: 800;
+  font-size: clamp(26px, 2.2vw, 34px);
+  line-height: 1.15;
+  margin-bottom: 12px;
+  color: var(--cta-text);
+}
+
+/* CTA: never show the accent underline */
+.cta-section .accent-title::after {
+  content: none;
+  display: none;
+}
+
+/* CTA paragraph + button spacing feels tighter/clearer */
+.cta-section p {
+  max-width: 62ch;
+  margin-left: auto;
+  margin-right: auto;
+  color: var(--cta-subtext);
+}
+
+.cta-section a {
+  color: var(--cta-text);
+  text-decoration: none;
+}
+
+.cta-section p a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.cta-section .wp-block-button__link,
+.cta-section .wp-element-button {
+  background: var(--cta-button-bg);
+  color: var(--cta-button-text);
+  border: 1px solid var(--cta-button-border);
+  box-shadow: none;
+}
+
+.cta-section .wp-block-button__link:hover,
+.cta-section .wp-element-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+}
+
+/* If you also use `accent-wrap` on this section, keep the underline and frame playing nicely */
+.trust-section.accent-wrap .accent-title::after {
+  width: 92px;
+}
+.trust-section.accent-wrap:hover .accent-title::after,
+.trust-section.accent-wrap:focus-within .accent-title::after {
+  width: 128px;
+}
+
+/* DEBUG TARGETING (uncomment temporarily)
+.wp-block-group.hero-wrap,
+.hero-wrap { outline: 2px solid red; }
+.wp-block-group.hero-card,
+.hero-card { outline: 2px solid lime; }
+*/
+
+/* HERO: do not use the section underline treatment */
+.hero-wrap .accent-title::after {
+  content: none;
+  display: none;
+}
+
+/* HERO headline polish (subtle, professional "pop") */
+.hero-wrap .wp-block-heading {
+  letter-spacing: -0.01em;
+}
+
+.hero-wrap .wp-block-heading strong {
+  font-weight: 800;
+}
+
+.service-card {
+  box-shadow:
+    0 8px 20px rgba(15, 23, 42, 0.08),
+    0 2px 6px rgba(15, 23, 42, 0.04);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 20px 44px rgba(15, 23, 42, 0.18),
+    0 6px 16px rgba(15, 23, 42, 0.08);
+  border-top: 3px solid var(--color-gold);
+}
+
+/* Light theme card hover polish (services + why cards) */
+body[data-theme="light"] .service-card,
+body.theme-light .service-card,
+body[data-theme="light"] .why-card,
+body.theme-light .why-card {
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+body[data-theme="light"] .service-card:hover,
+body.theme-light .service-card:hover,
+body[data-theme="light"] .why-card:hover,
+body.theme-light .why-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(var(--color-gold-rgb), 0.45) !important;
+  box-shadow:
+    0 22px 50px rgba(15, 23, 42, 0.18),
+    0 8px 20px rgba(15, 23, 42, 0.10) !important;
+  background-image:
+    linear-gradient(180deg, rgba(var(--color-gold-rgb), 0.12), rgba(255, 255, 255, 0) 48%) !important;
+}
+
+/* Nav links: subtle gold underline on hover + active
+   NOTE: On Kadence, nav links can be inline and have padding/line-height that makes
+   pseudo-elements look "too low". We force inline-block + a predictable underline offset.
+*/
+#masthead .main-navigation a,
+#masthead .site-navigation a,
+.site-header .main-navigation a,
+.site-header .site-navigation a {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  padding-bottom: 6px; /* room for underline without pushing it too low */
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+
+#masthead .main-navigation a::after,
+#masthead .site-navigation a::after,
+.site-header .main-navigation a::after,
+.site-header .site-navigation a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 1px; /* tighter to text for header */
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    rgba(201, 162, 39, 0.35),
+    var(--color-gold),
+    rgba(201, 162, 39, 0.35)
+  );
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  pointer-events: none;
+}
+
+#masthead .main-navigation a:hover::after,
+#masthead .site-navigation a:hover::after,
+.site-header .main-navigation a:hover::after,
+.site-header .site-navigation a:hover::after {
+  opacity: 1;
+  transform: scaleX(1);
+  box-shadow: 0 0 12px rgba(201, 162, 39, 0.45);
+}
+
+#masthead .main-navigation a:hover,
+#masthead .site-navigation a:hover,
+.site-header .main-navigation a:hover,
+.site-header .site-navigation a:hover {
+  text-shadow: 0 0 14px rgba(201, 162, 39, 0.25);
+}
+
+/* If WP marks current menu item */
+#masthead .current-menu-item > a::after,
+#masthead .current_page_item > a::after,
+.site-header .current-menu-item > a::after,
+.site-header .current_page_item > a::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+/* Kadence sometimes marks the active link with aria-current */
+#masthead a[aria-current="page"]::after,
+.site-header a[aria-current="page"]::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+/* Subtle emphasis for the Schedule link without button styling */
+#masthead .main-navigation a[href*="schedule"],
+#masthead .main-navigation a[href*="call"],
+#masthead .site-navigation a[href*="schedule"],
+#masthead .site-navigation a[href*="call"],
+.site-header .main-navigation a[href*="schedule"],
+.site-header .main-navigation a[href*="call"],
+.site-header .site-navigation a[href*="schedule"],
+.site-header .site-navigation a[href*="call"] {
+  color: rgba(255, 224, 140, 0.95) !important;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+#masthead .main-navigation a[href*="schedule"]::before,
+#masthead .main-navigation a[href*="call"]::before,
+#masthead .site-navigation a[href*="schedule"]::before,
+#masthead .site-navigation a[href*="call"]::before,
+.site-header .main-navigation a[href*="schedule"]::before,
+.site-header .main-navigation a[href*="call"]::before,
+.site-header .site-navigation a[href*="schedule"]::before,
+.site-header .site-navigation a[href*="call"]::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin-right: 8px;
+  margin-bottom: 2px;
+  border-radius: 999px;
+  background: rgba(201, 162, 39, 0.85);
+  box-shadow: 0 0 8px rgba(201, 162, 39, 0.35);
+  vertical-align: middle;
+}
+
+#masthead .main-navigation a[href*="schedule"]:hover,
+#masthead .main-navigation a[href*="call"]:hover,
+#masthead .site-navigation a[href*="schedule"]:hover,
+#masthead .site-navigation a[href*="call"]:hover,
+.site-header .main-navigation a[href*="schedule"]:hover,
+.site-header .main-navigation a[href*="call"]:hover,
+.site-header .site-navigation a[href*="schedule"]:hover,
+.site-header .site-navigation a[href*="call"]:hover {
+  color: #ffffff !important;
+}
+
+/* Mobile spacing rhythm (global) */
+@media (max-width: 781px) {
+  .wp-site-blocks .wp-block-group {
+    scroll-margin-top: 90px; /* helps anchor links w/ sticky header */
+  }
+
+  /* Reduce over-wide "boxed" feel on mobile */
+  .wp-site-blocks > .alignwide,
+  .wp-site-blocks > .alignfull,
+  .wp-site-blocks > .wp-block-group.alignwide,
+  .wp-site-blocks > .wp-block-group.alignfull {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  /* Consistent vertical breathing room between major sections */
+  .wp-site-blocks > * + * {
+    margin-top: 48px;
+  }
+}
+
+/* WHY CLIENTS CHOOSE US -- auto-scroll carousel (CSS only)
+   For a seamless loop, duplicate the card set inside .why-carousel-track. */
+.why-carousel {
+  overflow: hidden;
+  position: relative;
+  padding: 12px 0 22px;
+}
+
+.why-carousel::before,
+.why-carousel::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 120px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.why-carousel::before {
+  left: 0;
+  background: linear-gradient(90deg, rgba(11, 18, 32, 1), rgba(11, 18, 32, 0));
+}
+
+.why-carousel::after {
+  right: 0;
+  background: linear-gradient(270deg, rgba(11, 18, 32, 1), rgba(11, 18, 32, 0));
+}
+
+.why-carousel-track {
+  display: flex;
+  gap: 24px;
+  width: max-content;
+  align-items: stretch;
+  animation: whyScroll 36s linear infinite;
+  will-change: transform;
+}
+
+.why-carousel-track:has(.why-card:hover),
+.why-carousel:has(.why-card:hover) .why-carousel-track {
+  animation-play-state: paused;
+}
+
+.why-card {
+  position: relative;
+  flex: 0 0 320px;
+  min-height: 232px;
+  border-radius: 18px;
+  padding: 24px 24px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: linear-gradient(180deg, rgba(22, 32, 54, 0.94), rgba(13, 20, 36, 0.94));
+  border: 1px solid rgba(230, 233, 242, 0.10);
+  border-top: 3px solid rgba(201, 162, 39, 0.32);
+  box-shadow:
+    0 14px 30px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  transform: translateZ(0);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.why-card::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 20px;
+  background: linear-gradient(
+    120deg,
+    rgba(201, 162, 39, 0.18),
+    rgba(201, 162, 39, 0),
+    rgba(201, 162, 39, 0.18)
+  );
+  opacity: 0.22;
+  pointer-events: none;
+}
+
+.why-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(201, 162, 39, 0.55);
+  border-top-color: rgba(201, 162, 39, 0.9);
+  box-shadow:
+    0 22px 50px rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(201, 162, 39, 0.2),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.why-card h3 {
+  margin-top: 0;
+  margin-bottom: 6px;
+  font-size: 1.25rem;
+  line-height: 1.2;
+}
+
+.why-card h3::after {
+  content: none;
+  display: none;
+}
+
+.why-card p {
+  margin: 0;
+  color: rgba(230, 233, 242, 0.78);
+  font-size: 0.98rem;
+  line-height: 1.55;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.why-carousel .wp-block-heading,
+.why-carousel h2 {
+  position: relative;
+  margin-bottom: 18px;
+  text-align: center;
+  letter-spacing: -0.01em;
+  color: var(--color-text-main);
+}
+
+.why-carousel .wp-block-heading::after,
+.why-carousel h2::after {
+  content: "";
+  display: block;
+  width: 96px;
+  height: 3px;
+  margin-top: 14px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    rgba(201, 162, 39, 0.25),
+    rgba(255, 224, 140, 0.85),
+    rgba(201, 162, 39, 0.25)
+  );
+  opacity: 0.9;
+}
+
+@keyframes whyScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Mobile: stack cards, no animation */
+@media (max-width: 781px) {
+  .why-carousel {
+    overflow: visible;
+  }
+
+  .why-carousel::before,
+  .why-carousel::after {
+    display: none;
+  }
+
+  .why-carousel-track {
+    animation: none;
+    flex-wrap: wrap;
+  }
+
+  .why-card {
+    flex: 1 1 100%;
+    min-height: 0;
+  }
+
+  .why-card p {
+    display: block;
+    overflow: visible;
+  }
+}
+
+@media (max-width: 1023px) {
+  .why-carousel {
+    padding: 10px 0 18px;
+  }
+
+  .why-carousel::before,
+  .why-carousel::after {
+    width: 80px;
+  }
+
+  .why-carousel-track {
+    gap: 18px;
+  }
+
+  .why-card {
+    flex-basis: 280px;
+    min-height: 216px;
+    padding: 22px 22px 24px;
+  }
+
+  .why-card h3 {
+    font-size: 1.15rem;
+  }
+
+  .why-card p {
+    font-size: 0.95rem;
+  }
+}
+
+/* ============================================================
+   FOOTER (Kadence)
+   Goal: match dark/light theme, add structure, and keep widgets readable.
+============================================================ */
+#colophon,
+.site-footer {
+  background: var(--color-bg-main);
+  color: var(--color-text-main);
+  border-top: 1px solid rgba(230, 233, 242, 0.08);
+  position: relative;
+}
+
+#colophon::before,
+.site-footer::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 100vw;
+  height: 2px;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    90deg,
+    rgba(201, 162, 39, 0),
+    rgba(201, 162, 39, 0.55),
+    rgba(201, 162, 39, 0)
+  );
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.site-footer a {
+  color: rgba(230, 233, 242, 0.9);
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+body:not([data-theme="light"]):not(.theme-light) .site-footer {
+  background:
+    radial-gradient(680px 260px at 15% 0%, rgba(201, 162, 39, 0.12), transparent 60%),
+    radial-gradient(720px 300px at 85% 10%, rgba(255, 255, 255, 0.06), transparent 62%),
+    linear-gradient(180deg, rgba(11, 18, 32, 0.98), rgba(11, 18, 32, 1));
+}
+
+.site-footer .footer-top,
+.site-footer .footer-middle,
+.site-footer .footer-bottom,
+.site-footer .footer-widget-area,
+.site-footer .footer-widgets {
+  padding-left: clamp(16px, 2.5vw, 28px);
+  padding-right: clamp(16px, 2.5vw, 28px);
+}
+
+.site-footer .footer-top,
+.site-footer .footer-middle,
+.site-footer .footer-widget-area {
+  padding-top: clamp(30px, 3.2vw, 42px);
+  padding-bottom: clamp(12px, 2vw, 22px);
+}
+
+.site-footer .footer-bottom {
+  padding-top: 12px;
+  padding-bottom: 18px;
+  border-top: 1px solid rgba(230, 233, 242, 0.08);
+}
+
+.site-footer .widget-title,
+.site-footer .footer-widget-title,
+.site-footer h2,
+.site-footer h3,
+.site-footer h4 {
+  color: var(--color-text-main);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  margin-bottom: 12px;
+}
+
+.site-footer .widget,
+.site-footer .widget p,
+.site-footer .widget li {
+  color: rgba(230, 233, 242, 0.78);
+}
+
+.site-footer .widget li + li {
+  margin-top: 6px;
+}
+
+.site-footer .footer-navigation a {
+  font-weight: 600;
+}
+
+.site-footer .widget .wp-block-html a,
+.site-footer .widget .wp-block-html a:visited,
+.site-footer .widget a[href^="tel:"],
+.site-footer .widget a[href^="mailto:"],
+.site-footer .widget a[href^="http"] {
+  color: rgba(230, 233, 242, 0.9);
+  font-weight: 700;
+  text-decoration: none;
+  display: block !important;
+  width: fit-content !important;
+  border-bottom: 0;
+  padding-bottom: 2px;
+  background-image: linear-gradient(
+    90deg,
+    rgba(201, 162, 39, 0.35),
+    rgba(201, 162, 39, 0.8)
+  );
+  background-repeat: no-repeat;
+  background-size: 100% 1px;
+  background-position: 0 100%;
+}
+
+.site-footer .widget .wp-block-html a:hover,
+.site-footer .widget a[href^="tel:"]:hover,
+.site-footer .widget a[href^="mailto:"]:hover,
+.site-footer .widget a[href^="http"]:hover {
+  color: #ffffff;
+  background-image: linear-gradient(
+    90deg,
+    rgba(201, 162, 39, 0.55),
+    rgba(201, 162, 39, 1)
+  );
+}
+
+.site-footer .widget .wp-block-html a + a {
+  margin-top: 8px;
+  display: inline-block;
+}
+
+.site-footer .wp-block-html iframe,
+.site-footer .wp-block-embed iframe,
+.site-footer iframe {
+  width: 100% !important;
+  max-width: 100% !important;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.35);
+}
+
+body[data-theme="light"], body.theme-light #colophon,
+body[data-theme="light"], body.theme-light .site-footer {
+  background: #ffffff;
+  color: #0b1220;
+  border-top: 1px solid rgba(15, 23, 42, 0.10);
+}
+
+body[data-theme="light"], body.theme-light #colophon::before,
+body[data-theme="light"], body.theme-light .site-footer::before {
+  opacity: 0.45;
+}
+
+body[data-theme="light"], body.theme-light .site-footer a {
+  color: rgba(11, 18, 32, 0.9);
+}
+
+body[data-theme="light"], body.theme-light .site-footer a:hover {
+  color: #0b1220;
+}
+
+body[data-theme="light"], body.theme-light .site-footer .widget,
+body[data-theme="light"], body.theme-light .site-footer .widget p,
+body[data-theme="light"], body.theme-light .site-footer .widget li {
+  color: rgba(11, 18, 32, 0.72);
+}
+
+body[data-theme="light"], body.theme-light .site-footer .widget .wp-block-html a,
+body[data-theme="light"], body.theme-light .site-footer .widget a[href^="tel:"],
+body[data-theme="light"], body.theme-light .site-footer .widget a[href^="mailto:"],
+body[data-theme="light"], body.theme-light .site-footer .widget a[href^="http"] {
+  color: rgba(11, 18, 32, 0.9);
+  background-image: linear-gradient(
+    90deg,
+    rgba(201, 162, 39, 0.45),
+    rgba(201, 162, 39, 0.9)
+  );
+}
+
+body[data-theme="light"], body.theme-light .site-footer .widget .wp-block-html a:hover,
+body[data-theme="light"], body.theme-light .site-footer .widget a[href^="tel:"]:hover,
+body[data-theme="light"], body.theme-light .site-footer .widget a[href^="mailto:"]:hover,
+body[data-theme="light"], body.theme-light .site-footer .widget a[href^="http"]:hover {
+  color: #0b1220;
+  background-image: linear-gradient(
+    90deg,
+    rgba(201, 162, 39, 0.6),
+    rgba(201, 162, 39, 1)
+  );
+}
+
+/* ============================================================
+   CUSTOM FOOTER (agent-footer)
+   Goal: professional, clean footer across all themes.
+============================================================ */
+#colophon.agent-footer {
+  background: linear-gradient(180deg, rgba(6, 10, 18, 0.98), rgba(10, 16, 28, 1)) !important;
+  color: #e8ecf4 !important;
+  border-top: 1px solid rgba(201, 162, 39, 0.18) !important;
+  position: relative;
+  padding: 60px 20px 46px !important;
+}
+
+#colophon.agent-footer::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 100vw;
+  height: 2px;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    90deg,
+    rgba(201, 162, 39, 0),
+    rgba(201, 162, 39, 0.55),
+    rgba(201, 162, 39, 0)
+  );
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+#colophon.agent-footer .agent-footer__inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: 44px;
+  align-items: start;
+}
+
+#colophon.agent-footer .agent-footer__col--left {
+  text-align: center;
+}
+
+#colophon.agent-footer .agent-footer__col--right {
+  text-align: left;
+}
+
+#colophon.agent-footer .agent-footer__title {
+  color: #e8ecf4;
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
+  margin-bottom: 12px;
+}
+
+#colophon.agent-footer .agent-footer__text {
+  color: rgba(230, 233, 242, 0.78);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+#colophon.agent-footer .agent-footer__link {
+  display: inline-block;
+  color: #e8ecf4;
+  text-decoration: none;
+  font-weight: 600;
+  margin-top: 6px;
+  padding-bottom: 4px;
+  border-bottom: 2px solid rgba(201, 162, 39, 0.75);
+  transition: color 0.2s ease, border-color 0.2s ease;
+  width: 160px;
+}
+
+#colophon.agent-footer .agent-footer__link + .agent-footer__link {
+  margin-left: 0;
+  margin-top: 10px;
+  display: block;
+}
+
+#colophon.agent-footer .agent-footer__link:hover {
+  color: #ffffff;
+  border-bottom-color: rgba(255, 224, 120, 0.95);
+}
+
+#colophon.agent-footer .agent-footer__bottom {
+  text-align: center;
+  margin-top: 36px;
+  color: rgba(230, 233, 242, 0.78);
+  font-size: 0.95rem;
+}
+
+
+/* Light themes: keep footer clean but still premium */
+body[data-theme="light"] #colophon.agent-footer,
+body.theme-light #colophon.agent-footer {
+  background: linear-gradient(180deg, #f3f5f9, #ffffff) !important;
+  color: #0b1220 !important;
+  border-top: 1px solid rgba(15, 23, 42, 0.18) !important;
+}
+
+body[data-theme="light"] #colophon.agent-footer::before,
+body.theme-light #colophon.agent-footer::before {
+  background: linear-gradient(
+    90deg,
+    rgba(15, 23, 42, 0),
+    rgba(15, 23, 42, 0.28),
+    rgba(15, 23, 42, 0)
+  );
+  opacity: 0.6;
+}
+
+body[data-theme="light"] #colophon.agent-footer .agent-footer__title,
+body.theme-light #colophon.agent-footer .agent-footer__title {
+  color: #0b1220;
+}
+
+body[data-theme="light"] #colophon.agent-footer .agent-footer__text,
+body.theme-light #colophon.agent-footer .agent-footer__text,
+body[data-theme="light"] #colophon.agent-footer .agent-footer__bottom,
+body.theme-light #colophon.agent-footer .agent-footer__bottom {
+  color: rgba(11, 18, 32, 0.72);
+}
+
+body[data-theme="light"] #colophon.agent-footer .agent-footer__link,
+body.theme-light #colophon.agent-footer .agent-footer__link {
+  color: #0b1220;
+  border-bottom-color: rgba(15, 23, 42, 0.65);
+}
+
+body[data-theme="light"] #colophon.agent-footer .agent-footer__link:hover,
+body.theme-light #colophon.agent-footer .agent-footer__link:hover {
+  border-bottom-color: rgba(15, 23, 42, 0.9);
+}
+
+@media (max-width: 900px) {
+  #colophon.agent-footer .agent-footer__inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  #colophon.agent-footer .agent-footer__col--right {
+    text-align: center;
+  }
+  #colophon.agent-footer .agent-footer__link {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #colophon.agent-footer .agent-footer__to-top {
+    right: 16px;
+    bottom: 16px;
+  }
+}
+
+@media (max-width: 781px) {
+  /* If lists appear in the hero on mobile, align them left for readability */
+  .hero-wrap ul,
+  .hero-wrap ol {
+    text-align: left !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .hero-wrap li {
+    text-align: left !important;
+  }
+
+  /* Prevent editor-inserted line breaks in the hero profile paragraph on mobile */
+  .hero-profile p br {
+    display: none !important;
+  }
+}
+
+.scroll-to-top,
+.kadence-scroll-to-top,
+.kadence-scroll-to-top button,
+.scroll-to-top-button {
+  background: var(--color-gold) !important;
+  color: #0b1220 !important;
+  border: 1px solid rgba(201, 162, 39, 0.55) !important;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.35) !important;
+}
+
+.scroll-to-top:hover,
+.kadence-scroll-to-top:hover,
+.kadence-scroll-to-top button:hover,
+.scroll-to-top-button:hover {
+  background: #e6c35a !important;
+  color: #0b1220 !important;
+}
+
+@media (max-width: 781px) {
+  .site-footer .footer-top,
+  .site-footer .footer-middle,
+  .site-footer .footer-bottom,
+  .site-footer .footer-widget-area {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .site-footer .footer-top,
+  .site-footer .footer-middle,
+  .site-footer .footer-widget-area {
+    padding-top: 16px;
+    padding-bottom: 12px;
+  }
+
+  .site-footer .footer-bottom {
+    text-align: center;
+  }
+}
+
+/* HERO business name (brand anchor) */
+.hero-business-name {
+  font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(15, 23, 42, 0.75);
+  margin-bottom: 0.75rem;
+}
+
+
+/* =======================================================================
+   MOBILE FIX PACK
+   Goal: consistent spacing, readable type, centered alignment where needed,
+   remove awkward overflow, and fix "boxed card inside frame" mobile issues.
+   NOTE: This block is placed at the end of the file so it wins in the cascade.
+======================================================================= */
+
+/* ---------- 1) Global mobile spacing + container sanity ---------- */
+@media (max-width: 781px) {
+  /* SINGLE source of truth for mobile gutters */
+  :root {
+    --mobile-gutter: 16px; /* small outer gutter; reduce internal padding instead */
+  }
+
+  /* Prevent horizontal scroll */
+  body,
+  .wp-site-blocks {
+    overflow-x: hidden;
+  }
+
+  /* Apply gutter ONCE at the page level */
+  .wp-site-blocks {
+    padding-left: var(--mobile-gutter) !important;
+    padding-right: var(--mobile-gutter) !important;
+  }
+
+  /* Kill stacked padding from theme + blocks */
+  .content-container,
+  .site-container,
+  .content-wrap,
+  .entry-content-wrap,
+  .wp-block-group__inner-container {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  /* Keep alignwide/alignfull aligned to the mobile gutter */
+  .wp-site-blocks > .alignwide,
+  .wp-site-blocks > .alignfull,
+  .wp-site-blocks > .wp-block-group.alignwide,
+  .wp-site-blocks > .wp-block-group.alignfull {
+    padding-left: var(--mobile-gutter) !important;
+    padding-right: var(--mobile-gutter) !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  /* Normalize text wrapping */
+  .wp-site-blocks {
+    word-break: normal;
+    overflow-wrap: break-word;
+    hyphens: none;
+  }
+
+  /* Consistent vertical rhythm */
+  .wp-site-blocks > * + * {
+    margin-top: 40px !important;
+  }
+
+  /* Normalize common block margins */
+  .wp-site-blocks p,
+  .wp-site-blocks h1,
+  .wp-site-blocks h2,
+  .wp-site-blocks h3,
+  .wp-site-blocks h4,
+  .wp-site-blocks figure,
+  .wp-site-blocks .wp-block-buttons {
+    margin-top: 0.75rem !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  /* Buttons: centered + not oversized */
+  .wp-block-buttons {
+    justify-content: center !important;
+  }
+
+  .wp-block-button__link,
+  .wp-element-button {
+    max-width: 100% !important;
+    padding: 12px 18px !important;
+    border-radius: 14px !important;
+  }
+}
+
+/* Prevent mid-word hyphenation across the site */
+html,
+body {
+  hyphens: none;
+  -webkit-hyphens: none;
+  -ms-hyphens: none;
+}
+
+/* Force-disable hyphenation on all site text (avoid mid-word breaks) */
+.wp-site-blocks,
+.wp-site-blocks *:not(code):not(pre) {
+  hyphens: none !important;
+  -webkit-hyphens: none !important;
+  -ms-hyphens: none !important;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
+/* ---------- Tablet spacing + containment (iPad Air, etc.) ---------- */
+@media (max-width: 1023px) {
+  :root {
+    --mobile-gutter: 20px;
+  }
+
+  /* Keep content contained without double padding */
+  .wp-site-blocks {
+    padding-left: var(--mobile-gutter) !important;
+    padding-right: var(--mobile-gutter) !important;
+  }
+
+  /* Services: ensure cards never touch viewport edges on tablets */
+  .services-section,
+  .service-detail-grid {
+    padding-left: var(--mobile-gutter) !important;
+    padding-right: var(--mobile-gutter) !important;
+  }
+
+  .content-container,
+  .site-container,
+  .content-wrap,
+  .entry-content-wrap,
+  .wp-block-group__inner-container {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  /* Reduce overly tall vertical rhythm on tablets */
+  .wp-site-blocks > * + * {
+    margin-top: 42px !important;
+  }
+}
+
+/* ---------- Small phones (iPhone SE, etc.) ---------- */
+@media (max-width: 420px) {
+  :root {
+    --mobile-gutter: 10px;
+  }
+
+  .wp-site-blocks > * + * {
+    margin-top: 28px !important;
+  }
+
+  .hero-wrap {
+    padding: 8px !important;
+  }
+
+  .hero-wrap .wp-block-columns {
+    padding: 8px !important;
+    gap: 12px !important;
+  }
+}
+
+/* ---------- Large phones (iPhone Pro Max, etc.) ---------- */
+@media (min-width: 421px) and (max-width: 480px) {
+  :root {
+    --mobile-gutter: 16px;
+  }
+
+  .wp-site-blocks > * + * {
+    margin-top: 32px !important;
+  }
+
+  .hero-wrap {
+    padding: 10px !important;
+  }
+
+  .hero-wrap .wp-block-columns {
+    padding: 10px !important;
+    gap: 14px !important;
+  }
+
+  .hero-wrap h1,
+  .hero-wrap h2,
+  .hero-wrap .wp-block-heading {
+    font-size: clamp(28px, 6.5vw, 38px) !important;
+  }
+}
+
+
+/* ---------- 2) HERO mobile: fix giant type + odd vertical spacing ---------- */
+@media (max-width: 781px) {
+  /* Outer hero frame: reduce thickness so content doesn't feel squeezed */
+  .hero-wrap {
+    padding: 10px !important;
+    border-radius: 18px !important;
+  }
+
+  /* Inner hero surface: keep it a touch tighter */
+  .hero-wrap > .wp-block-group__inner-container > .hero-card,
+  .wp-block-group.hero-wrap > .wp-block-group__inner-container > .wp-block-group.hero-card {
+    border-radius: 16px !important;
+  }
+
+  /* Columns wrapper padding + gap */
+  .hero-wrap .wp-block-columns {
+    padding: 10px 10px !important;
+    gap: 14px !important;
+  }
+
+  /* Hard reset any desktop column padding (prevents super-narrow columns and letter-by-letter wrapping) */
+  .hero-wrap .wp-block-columns > .wp-block-column {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    max-width: 100% !important;
+  }
+
+  /* Ensure headings/labels don't break mid-word on small screens */
+  .hero-wrap,
+  .hero-wrap * {
+    word-break: normal;
+    overflow-wrap: break-word;
+    hyphens: none;
+  }
+
+  /* When stacked, center the left-side content */
+  .hero-wrap .wp-block-columns > .wp-block-column:first-child {
+    text-align: center !important;
+    align-items: center !important;
+  }
+
+  /* Business name: smaller and less floaty */
+  .hero-business-name {
+    font-size: 0.78rem !important;
+    letter-spacing: 0.12em !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  /* Headline clamp so it doesn't turn into a skyscraper */
+  .hero-wrap h1,
+  .hero-wrap h2,
+  .hero-wrap .wp-block-heading {
+    font-size: clamp(28px, 7vw, 40px) !important;
+    line-height: 1.12 !important;
+    letter-spacing: -0.02em !important;
+  }
+
+  /* Supporting copy: readable width + centering */
+  .hero-wrap p {
+    font-size: 1rem !important;
+    line-height: 1.55 !important;
+    max-width: 40ch !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  /* Stacked divider is already border-bottom; just tighten spacing */
+  .hero-wrap .wp-block-columns > .wp-block-column:first-child {
+    padding-bottom: 12px !important;
+    margin-bottom: 12px !important;
+  }
+
+  /* Advisor module centered */
+  .hero-profile {
+    align-items: center !important;
+    text-align: center !important;
+    padding: 10px 6px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    max-width: 100% !important;
+  }
+
+  /* Advisor halo: smaller + less intense */
+  .hero-profile::before {
+    top: 44% !important;
+    width: min(420px, 96%) !important;
+    height: 62% !important;
+    opacity: 0.62 !important;
+  }
+
+  /* Advisor image: premium crop but not overwhelming */
+  .hero-profile__img {
+    max-width: 100% !important;
+    aspect-ratio: auto !important;
+    border-radius: 18px !important;
+    box-shadow: 0 18px 44px rgba(15, 23, 42, 0.16), 0 6px 18px rgba(15, 23, 42, 0.08) !important;
+  }
+
+  /* Center the name underline */
+  .hero-profile__name::after {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  /* Button spacing so it doesn't crash into the divider */
+  .hero-wrap .wp-block-buttons {
+    margin-top: 14px !important;
+  }
+
+  /* Services hero: if the right column contains nested Columns (used for plan options),
+     stack cleanly and remove the "bullet-only" helper column on mobile. */
+  .hero-wrap .wp-block-columns > .wp-block-column:last-child .wp-block-columns {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    margin-top: 10px !important;
+  }
+
+  /* Hide the first nested column (this is typically the column that only contains bullets) */
+  .hero-wrap .wp-block-columns > .wp-block-column:last-child .wp-block-columns > .wp-block-column:first-child {
+    display: none !important;
+  }
+
+  /* Ensure the remaining column is centered and full width */
+  .hero-wrap .wp-block-columns > .wp-block-column:last-child .wp-block-columns > .wp-block-column:last-child {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    text-align: center !important;
+  }
+
+  /* Make any lists inside the plan options area look intentional on mobile */
+  .hero-wrap .wp-block-columns > .wp-block-column:last-child ul {
+    margin: 10px 0 0 !important;
+    padding-left: 0 !important;
+    list-style-position: inside;
+  }
+}
+
+
+/* ---------- 3) Section frames on mobile: avoid heavy side bars ---------- */
+@media (max-width: 781px) {
+  /* On mobile, convert the thick side-rule to a subtle top accent.
+     Keeps the navy brand accent without looking like a giant bracket. */
+  .gold-frame-left,
+  .gold-frame-right {
+    border-left: 1px solid rgba(201, 162, 39, 0.22) !important;
+    border-right: 1px solid rgba(201, 162, 39, 0.18) !important;
+    border-top: 4px solid rgba(var(--color-primary-rgb), 0.92) !important;
+    border-bottom: 1px solid rgba(201, 162, 39, 0.14) !important;
+    border-radius: 18px !important;
+  }
+
+  .gold-frame-left > .wp-block-group__inner-container,
+  .gold-frame-right > .wp-block-group__inner-container {
+    padding: 16px 14px !important;
+  }
+
+  /* Testimonials page: give the trust section breathing room on mobile */
+  .trust-section.gold-frame-left.accent-wrap {
+    margin-left: var(--mobile-gutter) !important;
+    margin-right: var(--mobile-gutter) !important;
+  }
+}
+
+
+/* ---------- 4) Services cards: better stacking + lighter shadows ---------- */
+@media (max-width: 781px) {
+  /* Prevent awkward mid-word breaks in service cards on mobile */
+  .services-section,
+  .services-section * {
+    word-break: normal;
+    overflow-wrap: break-word;
+    hyphens: none;
+  }
+
+  /* If services uses columns, tighten the mobile stack */
+  .services-section .wp-block-columns {
+    gap: 16px !important;
+  }
+
+  .services-section .wp-block-column {
+    flex-basis: 100% !important;
+  }
+
+  /* Give service cards a little breathing room from edges */
+  .service-card,
+  .service-detail-card,
+  .services-section .wp-block-column > .wp-block-group {
+    padding: 18px 16px !important;
+  }
+
+  /* Cards shouldn't feel like giant floating slabs */
+  .service-card,
+  .services-section .wp-block-group,
+  .services-section .wp-block-column > .wp-block-group {
+    box-shadow: 0 10px 22px rgba(15, 23, 42, 0.10), 0 3px 10px rgba(15, 23, 42, 0.06) !important;
+  }
+
+  .services-section .wp-block-buttons {
+    justify-content: center !important;
+  }
+}
+
+/* ---------- 4b) Mobile card gutters: trust + CTA + any missed stacks ---------- */
+@media (max-width: 781px) {
+  .trust-section .wp-block-html,
+  .trust-section .wp-block-embed,
+  .cta-section .cta-card,
+  .wp-block-group.cta-card,
+  .why-card,
+  .service-detail-card,
+  .gold-frame-left .wp-block-group.has-background,
+  .gold-frame-right .wp-block-group.has-background,
+  .services-section .wp-block-group.has-background {
+    margin-left: var(--mobile-gutter) !important;
+    margin-right: var(--mobile-gutter) !important;
+  }
+}
+
+
+/* ---------- 5) "Meet your local" split section: clean stack ---------- */
+@media (max-width: 781px) {
+  /* Make big images behave and match the rounded system */
+  .wp-site-blocks .wp-block-image {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .wp-site-blocks .wp-block-image img {
+    height: auto !important;
+    max-width: 100% !important;
+    border-radius: 18px !important;
+  }
+
+  /* Improve paragraph readability */
+  .wp-site-blocks p {
+    max-width: 52ch !important;
+  }
+
+  /* Responsive embeds (Google Maps) */
+  .wp-site-blocks iframe,
+  .wp-site-blocks .wp-block-embed iframe,
+  .wp-site-blocks .wp-block-html iframe {
+    width: 100% !important;
+    max-width: 100% !important;
+    display: block;
+    border-radius: 18px;
+  }
+
+  /* If an embed wrapper exists, keep it from introducing side padding that narrows the map */
+  .wp-site-blocks .wp-block-embed,
+  .wp-site-blocks .wp-block-html {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    max-width: 100% !important;
+  }
+}
+
+
+/* ---------- 6) CTA section: keep it compact on mobile ---------- */
+@media (max-width: 781px) {
+  .cta-section {
+    padding: 14px !important;
+    border-radius: 18px !important;
+  }
+
+  .cta-section .cta-card,
+  .wp-block-group.cta-card {
+    padding: 22px 16px !important;
+    border-radius: 16px !important;
+  }
+
+  .cta-section .wp-block-heading {
+    font-size: clamp(24px, 6.5vw, 34px) !important;
+  }
+
+  .cta-section p {
+    font-size: 1rem !important;
+    line-height: 1.55 !important;
+    max-width: 42ch !important;
+  }
+}
+
+
+/* ============================================================
+   SERVICES DETAIL (deep-dive cards)
+   Goal: use the SAME "framed dark surface" language as the
+   Insurance Services / Why Choose Us sections.
+============================================================ */
+
+.service-detail-card {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  box-sizing: border-box;
+
+  background: rgba(17, 26, 46, 0.72) !important;
+  background-image:
+    radial-gradient(820px 420px at 18% 18%, rgba(255, 255, 255, 0.04), transparent 62%),
+    radial-gradient(740px 380px at 86% 28%, rgba(var(--color-gold-rgb), 0.08), transparent 64%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0));
+
+  border: 1px solid rgba(230, 233, 242, 0.10) !important;
+  box-shadow:
+    0 26px 70px rgba(0, 0, 0, 0.55),
+    0 10px 26px rgba(0, 0, 0, 0.35) !important;
+
+  transition:
+    box-shadow 0.18s ease,
+    transform 0.18s ease,
+    border-color 0.18s ease,
+    background-color 0.18s ease !important;
+}
+
+.service-detail-card > .wp-block-group__inner-container {
+  position: relative;
+  padding: 26px 26px;
+  border-radius: inherit;
+}
+
+.service-detail-card .wp-block-columns {
+  align-items: flex-start;
+  gap: 30px;
+}
+
+.service-detail-card,
+.service-detail-card * {
+  word-break: normal;
+  overflow-wrap: break-word;
+  hyphens: none;
+}
+
+.service-detail-card .wp-block-heading {
+  margin-top: 0;
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
+  color: var(--color-text-main) !important;
+  text-shadow: none !important;
+}
+
+.service-detail-card p,
+.service-detail-card li {
+  color: rgba(230, 233, 242, 0.84) !important;
+}
+
+.service-detail__left .wp-block-heading {
+  font-size: clamp(30px, 2.4vw, 40px);
+  line-height: 1.08;
+}
+
+.service-detail__left p {
+  font-size: 1.05rem;
+  line-height: 1.62;
+  max-width: 64ch;
+}
+
+.service-detail__right .wp-block-heading {
+  font-size: clamp(20px, 1.6vw, 28px);
+  line-height: 1.18;
+  font-weight: 800;
+}
+
+@media (min-width: 782px) {
+  .service-detail__right {
+    position: relative;
+    padding-left: 26px;
+    padding-right: 12px;
+  }
+  .service-detail__right::before {
+    content: "";
+    position: absolute;
+    left: 8px;
+    top: 6px;
+    bottom: 6px;
+    width: 1px;
+    background: linear-gradient(
+      180deg,
+      rgba(201, 162, 39, 0),
+      rgba(201, 162, 39, 0.24),
+      rgba(201, 162, 39, 0)
+    );
+  }
+}
+
+.service-detail__right ul {
+  margin-top: 12px;
+  margin-bottom: 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.service-detail__right li {
+  position: relative;
+  margin: 8px 0;
+  padding-left: 22px;
+  font-size: 1.02rem;
+  line-height: 1.5;
+}
+
+.service-detail__right li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(201, 162, 39, 0.95) !important;
+  box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.22) !important;
+}
+
+.service-detail-card:hover,
+.service-detail-card:focus-within {
+  transform: translateY(-2px);
+  border-color: rgba(201, 162, 39, 0.22) !important;
+  box-shadow:
+    0 34px 86px rgba(0, 0, 0, 0.62),
+    0 12px 30px rgba(0, 0, 0, 0.40) !important;
+}
+
+@media (hover: none) {
+  .service-detail-card:hover {
+    transform: none !important;
+  }
+}
+
+/* SERVICES DETAIL GRID (2-up on desktop, 1-up on mobile) */
+.service-detail-grid {
+  width: 100%;
+}
+
+.service-detail-grid > .wp-block-group__inner-container {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 34px;
+  align-items: start;
+
+  background: rgba(17, 26, 46, 0.50) !important;
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0));
+  border: 1px solid rgba(230, 233, 242, 0.10) !important;
+  border-radius: 20px;
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.55) !important;
+  padding: 28px;
+}
+
+.service-detail-grid .service-detail-card {
+  height: 100%;
+}
+
+.service-detail-grid .service-detail-card:hover {
+  transform: none !important;
+}
+
+@media (max-width: 1023px) {
+  .service-detail-grid > .wp-block-group__inner-container {
+    gap: 28px;
+  }
+}
+
+@media (max-width: 781px) {
+  .service-detail-card > .wp-block-group__inner-container {
+    padding: 18px 16px;
+    border-radius: 16px;
+  }
+
+  .service-detail-card .wp-block-columns {
+    gap: 16px;
+  }
+
+  .service-detail__right {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .service-detail-grid > .wp-block-group__inner-container {
+    grid-template-columns: 1fr;
+    gap: 22px;
+    padding: 16px;
+    border-radius: 18px;
+    background: rgba(17, 26, 46, 0.55) !important;
+  }
+
+  .service-detail-grid .service-detail-card {
+    transform: none !important;
+  }
+}
+
+/* LIGHT THEME (opt-in): restore light cards when body[data-theme="light"], body.theme-light */
+body[data-theme="light"] .service-detail-card,
+body.theme-light .service-detail-card {
+  background: #ffffff !important;
+  background-image: none !important;
+  border: 1px solid rgba(15, 23, 42, 0.14) !important;
+  box-shadow:
+    0 16px 42px rgba(15, 23, 42, 0.16),
+    0 6px 16px rgba(15, 23, 42, 0.08) !important;
+}
+
+body[data-theme="light"] .service-detail-card .wp-block-heading,
+body.theme-light .service-detail-card .wp-block-heading {
+  color: #0b1220 !important;
+}
+
+body[data-theme="light"] .service-detail-card p,
+body[data-theme="light"] .service-detail-card li,
+body.theme-light .service-detail-card p,
+body.theme-light .service-detail-card li {
+  color: rgba(11, 18, 32, 0.88) !important;
+}
+
+body[data-theme="light"] .service-detail-card:hover,
+body[data-theme="light"] .service-detail-card:focus-within,
+body.theme-light .service-detail-card:hover,
+body.theme-light .service-detail-card:focus-within {
+  transform: translateY(-4px);
+  border-color: rgba(var(--color-gold-rgb), 0.42) !important;
+  box-shadow:
+    0 26px 60px rgba(15, 23, 42, 0.20),
+    0 10px 24px rgba(15, 23, 42, 0.12) !important;
+  background-image:
+    linear-gradient(180deg, rgba(var(--color-gold-rgb), 0.10), rgba(255, 255, 255, 0) 52%) !important;
+}
+
+body[data-theme="light"] .service-detail-grid > .wp-block-group__inner-container,
+body.theme-light .service-detail-grid > .wp-block-group__inner-container {
+  background:
+    linear-gradient(180deg, rgba(var(--color-primary-rgb), 0.04), rgba(var(--color-gold-rgb), 0.10) 68%, rgba(255, 255, 255, 0.98)),
+    #ffffff !important;
+  border: 1px solid rgba(15, 23, 42, 0.12) !important;
+  box-shadow: 0 18px 50px rgba(15, 23, 42, 0.12) !important;
+}
+
+@media (max-width: 781px) {
+  body[data-theme="light"] .service-detail-grid > .wp-block-group__inner-container,
+  body.theme-light .service-detail-grid > .wp-block-group__inner-container {
+    background:
+      linear-gradient(180deg, rgba(var(--color-primary-rgb), 0.03), rgba(var(--color-gold-rgb), 0.08) 70%, rgba(255, 255, 255, 0.98)) !important;
+  }
+}
+
+/* ============================================================
+   MOBILE RESPONSIVE HARDENING
+   Goal: make all blocks stack cleanly, remove overflow, and
+   ensure controls stay tappable and readable.
+============================================================ */
+@media (max-width: 781px) {
+  /* Ensure columns actually stack unless explicitly opted out */
+  .wp-block-columns:not(.is-not-stacked-on-mobile) {
+    flex-wrap: wrap !important;
+    row-gap: 18px !important;
+  }
+
+  .wp-block-columns:not(.is-not-stacked-on-mobile) > .wp-block-column {
+    flex-basis: 100% !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Prevent carousel track from forcing horizontal scroll */
+  .why-carousel-track {
+    width: 100% !important;
+  }
+
+  /* Buttons: full-width for easy tapping */
+  .wp-block-buttons {
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+  }
+
+  .wp-block-button,
+  .wp-block-button__link,
+  .wp-element-button {
+    width: 100% !important;
+    text-align: center !important;
+  }
+
+  /* Tables: allow horizontal scroll instead of overflow */
+  .wp-block-table {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .wp-block-table table {
+    width: 100% !important;
+  }
+
+  .wp-block-table th,
+  .wp-block-table td {
+    word-break: break-word;
+  }
+
+  /* Forms: avoid side clipping */
+  input,
+  textarea,
+  select {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Long content + code: prevent horizontal scroll */
+  pre {
+    overflow-x: auto;
+  }
+
+  pre,
+  code,
+  .wp-block-code {
+    word-break: break-word;
+    white-space: pre-wrap;
+  }
+
+  /* Spacers and covers: tame huge vertical gaps */
+  .wp-block-spacer {
+    height: clamp(16px, 4vw, 28px) !important;
+  }
+
+  .wp-block-cover {
+    min-height: 0 !important;
+  }
+}
+
+/* ============================================================
+   DARK + BLACK: REMOVE BLUE CAST (neutral charcoal surfaces)
+============================================================ */
+body.theme-dark.palette-black,
+body.palette-black:not([data-theme="light"]):not(.theme-light) {
+  --color-bg-main: #0a0c10;
+  --color-bg-soft: #0f1116;
+  --color-bg-card: #14171d;
+  --color-header-bg: #0a0c10;
+}
+
+body.theme-dark.palette-black #masthead .site-header-row-container::before,
+body.theme-dark.palette-black .kadence-sticky-header-wrap .site-header-row-container::before,
+body.palette-black:not([data-theme="light"]):not(.theme-light) #masthead .site-header-row-container::before,
+body.palette-black:not([data-theme="light"]):not(.theme-light) .kadence-sticky-header-wrap .site-header-row-container::before {
+  background: #0a0c10 !important;
+}
+
+body.theme-dark.palette-black .hero-wrap,
+body.palette-black:not([data-theme="light"]):not(.theme-light) .hero-wrap {
+  background-color: var(--color-bg-soft) !important;
+  background-image:
+    radial-gradient(820px 420px at 18% 8%, rgba(255, 255, 255, 0.04), transparent 62%),
+    radial-gradient(740px 380px at 85% 30%, rgba(201, 162, 39, 0.10), transparent 60%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.32), rgba(0, 0, 0, 0));
+  border-color: rgba(232, 236, 244, 0.06) !important;
+}
+
+body.theme-dark.palette-black .gold-frame-left,
+body.theme-dark.palette-black .gold-frame-right,
+body.palette-black:not([data-theme="light"]):not(.theme-light) .gold-frame-left,
+body.palette-black:not([data-theme="light"]):not(.theme-light) .gold-frame-right {
+  background-color: rgba(16, 18, 22, 0.82) !important;
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0)) !important;
+  border-top-color: rgba(201, 162, 39, 0.18);
+  border-bottom-color: rgba(201, 162, 39, 0.10);
+}
+
+body.theme-dark.palette-black .gold-frame-left,
+body.palette-black:not([data-theme="light"]):not(.theme-light) .gold-frame-left {
+  border-left-color: rgba(201, 162, 39, 0.65);
+  border-right-color: rgba(232, 236, 244, 0.08);
+}
+
+body.theme-dark.palette-black .gold-frame-right,
+body.palette-black:not([data-theme="light"]):not(.theme-light) .gold-frame-right {
+  border-right-color: rgba(201, 162, 39, 0.65);
+  border-left-color: rgba(232, 236, 244, 0.08);
+}
+
+body.theme-dark.palette-black .service-card,
+body.theme-dark.palette-black .why-card,
+body.theme-dark.palette-black .service-detail-card,
+body.palette-black:not([data-theme="light"]):not(.theme-light) .service-card,
+body.palette-black:not([data-theme="light"]):not(.theme-light) .why-card,
+body.palette-black:not([data-theme="light"]):not(.theme-light) .service-detail-card {
+  background: linear-gradient(180deg, #15191f, #0f1116) !important;
+  border-color: rgba(201, 162, 39, 0.20) !important;
+}
+
+body.theme-dark.palette-black .service-detail-grid > .wp-block-group__inner-container,
+body.palette-black:not([data-theme="light"]):not(.theme-light) .service-detail-grid > .wp-block-group__inner-container {
+  background: rgba(16, 18, 24, 0.60) !important;
+  border-color: rgba(232, 236, 244, 0.10) !important;
+}
+
+body.theme-dark.palette-black .trust-section .wp-block-html,
+body.theme-dark.palette-black .trust-section .wp-block-embed,
+body.palette-black:not([data-theme="light"]):not(.theme-light) .trust-section .wp-block-html,
+body.palette-black:not([data-theme="light"]):not(.theme-light) .trust-section .wp-block-embed {
+  background: rgba(16, 18, 24, 0.70) !important;
+  border-color: rgba(232, 236, 244, 0.12) !important;
+}
+
+body.theme-dark.palette-black .cta-section .cta-card,
+body.theme-dark.palette-black .wp-block-group.cta-card,
+body.palette-black:not([data-theme="light"]):not(.theme-light) .cta-section .cta-card,
+body.palette-black:not([data-theme="light"]):not(.theme-light) .wp-block-group.cta-card {
+  background: rgba(16, 18, 24, 0.68) !important;
+  border-color: rgba(201, 162, 39, 0.28) !important;
+}
+
+/* ============================================================
+   CUSTOMER BACKGROUND IMAGE OVERRIDE
+   Ensures the marble image is visible behind all page surfaces.
+============================================================ */
+html,
+body,
+body:not([data-theme="light"]):not(.theme-light) {
+  background-color: transparent !important;
+  background-image: var(--page-bg-image) !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+}
+
+/* Mobile: avoid over-zoomed background (sharper on small screens) */
+@media (max-width: 781px) {
+  html,
+  body,
+  body:not([data-theme="light"]):not(.theme-light) {
+    /* Repeat vertically to avoid blown-up/washed look on small screens */
+    background-size: 100% auto !important;
+    background-position: center top !important;
+    background-repeat: repeat-y !important;
+    background-attachment: scroll !important;
+  }
+}
+
+body:not([data-theme="light"]):not(.theme-light) .wp-site-blocks,
+body:not([data-theme="light"]):not(.theme-light) #page,
+body:not([data-theme="light"]):not(.theme-light) #wrapper,
+body:not([data-theme="light"]):not(.theme-light) .site,
+body:not([data-theme="light"]):not(.theme-light) .site-container,
+body:not([data-theme="light"]):not(.theme-light) .content-wrap,
+body:not([data-theme="light"]):not(.theme-light) .entry-content-wrap,
+body:not([data-theme="light"]):not(.theme-light) .content-container {
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+/* Translucent content panel instead of white boxed background */
+body:not([data-theme="light"]):not(.theme-light) #page,
+body:not([data-theme="light"]):not(.theme-light) .site,
+body:not([data-theme="light"]):not(.theme-light) .site-container,
+body:not([data-theme="light"]):not(.theme-light) .content-wrap,
+body:not([data-theme="light"]):not(.theme-light) .entry-content-wrap,
+body:not([data-theme="light"]):not(.theme-light) .content-container {
+  background-color: rgba(8, 10, 14, 0.65) !important;
+  border-radius: 16px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+}
+
+/* Target Kadence content background wrapper */
+body:not([data-theme="light"]):not(.theme-light) .content-bg,
+body:not([data-theme="light"]):not(.theme-light) .entry-content-wrap {
+  background-color: rgba(8, 10, 14, 0.65) !important;
+  background-image: none !important;
+  border-radius: 16px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+}
+
+@media (max-width: 1023px) {
+  body:not([data-theme="light"]):not(.theme-light) .content-bg,
+  body:not([data-theme="light"]):not(.theme-light) .entry-content-wrap {
+    background-color: rgba(8, 10, 14, 0.45) !important;
+  }
+}
+
+/* Ensure only ONE translucent layer (the content-bg) */
+body:not([data-theme="light"]):not(.theme-light) #page,
+body:not([data-theme="light"]):not(.theme-light) .site,
+body:not([data-theme="light"]):not(.theme-light) .site-container,
+body:not([data-theme="light"]):not(.theme-light) .content-wrap,
+body:not([data-theme="light"]):not(.theme-light) .entry-content-wrap,
+body:not([data-theme="light"]):not(.theme-light) .content-container {
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+
+/* MOBILE RESPONSIVE PATCHES */
+@media (max-width: 781px) {
+  /* Reduce section padding on mobile so inner content has room */
+  .gold-frame-left,
+  .gold-frame-right,
+  .services-section,
+  .trust-section,
+  .cta-section,
+  .why-carousel {
+    padding: 16px !important;
+    padding-left: var(--mobile-gutter) !important;
+    padding-right: var(--mobile-gutter) !important;
+  }
+
+  .gold-frame-left > .wp-block-group__inner-container,
+  .gold-frame-right > .wp-block-group__inner-container,
+  .services-section > .wp-block-group__inner-container,
+  .trust-section > .wp-block-group__inner-container,
+  .cta-section > .wp-block-group__inner-container,
+  .why-carousel > .wp-block-group__inner-container {
+    padding: 0 !important;
+  }
+
+  /* Gutter handled by .wp-site-blocks in the Mobile Fix Pack */
+  body,
+  #page,
+  #wrapper,
+  .site,
+  .site-container,
+  .content-wrap,
+  .entry-content-wrap,
+  .content-container {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  /* When columns stack, reset per-column padding and center content cleanly */
+  .wp-block-columns:not(.is-not-stacked-on-mobile) {
+    row-gap: 18px !important;
+  }
+
+  .wp-block-columns:not(.is-not-stacked-on-mobile) > .wp-block-column {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    align-items: stretch !important;
+  }
+
+  /* Ensure stacked groups don't feel off-center */
+  .wp-block-columns:not(.is-not-stacked-on-mobile) .wp-block-group,
+  .wp-block-columns:not(.is-not-stacked-on-mobile) .wp-block-column > .wp-block-group__inner-container {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  /* Header: ensure full-bleed background and avoid boxed width on mobile */
+  #masthead,
+  .kadence-sticky-header-wrap {
+    left: 0;
+    right: 0;
+    width: 100%;
+  }
+
+  #masthead .site-header-row-container,
+  .kadence-sticky-header-wrap .site-header-row-container {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  /* Remove mobile-only header background "panel" */
+  #masthead .site-header-row-container::before,
+  #masthead .site-header-row-container::after,
+  .kadence-sticky-header-wrap .site-header-row-container::before,
+  .kadence-sticky-header-wrap .site-header-row-container::after {
+    content: none;
+    display: none;
+  }
+
+  /* Sticky header logo: smaller + remove any boxed background */
+  .kadence-sticky-header-wrap .site-branding,
+  .kadence-sticky-header-wrap .site-branding a {
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  #masthead .site-branding img,
+  .kadence-sticky-header-wrap .site-branding img,
+  .kadence-sticky-header-wrap .kadence-sticky-header .site-branding img,
+  .kadence-sticky-header-wrap img.custom-logo {
+    max-height: 44px;
+    width: auto;
+  }
+
+  /* Why Choose Us carousel: hide duplicated cards on mobile */
+  .why-carousel-track .why-card:nth-child(n+7) {
+    display: none;
+  }
+
+  /* Trust/Logo section: left-align text on mobile */
+  .trust-section .wp-block-column {
+    text-align: left !important;
+    align-items: flex-start !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .trust-section .wp-block-buttons {
+    justify-content: flex-start !important;
+  }
+
+  .trust-section .wp-block-image {
+    margin-left: 0 !important;
+    margin-right: auto !important;
+  }
+
+  .trust-section,
+  .trust-section * {
+    text-align: left !important;
+  }
+
+  /* Media-text stacks: keep text left-aligned on mobile */
+  .wp-block-media-text.is-stacked-on-mobile .wp-block-media-text__content {
+    text-align: left !important;
+  }
+
+  /* Mobile sanity checklist:
+     - Header spans full viewport width.
+     - Why Choose Us shows only 6 cards (duplicates hidden).
+     - Verify sticky header height feels balanced on mobile. */
+}
+
+/* ============================================================
+   MOBILE NAV DRAWER: match theme + palette
+   Targets common Kadence mobile/offcanvas wrappers.
+============================================================ */
+@media (max-width: 1023px) {
+  /* Drawer surfaces */
+  body:not([data-theme="light"]):not(.theme-light) .popup-drawer,
+  body:not([data-theme="light"]):not(.theme-light) .popup-drawer .drawer-inner,
+  body:not([data-theme="light"]):not(.theme-light) .popup-drawer .drawer-content,
+  body:not([data-theme="light"]):not(.theme-light) .mobile-navigation,
+  body:not([data-theme="light"]):not(.theme-light) .mobile-nav,
+  body:not([data-theme="light"]):not(.theme-light) .mobile-nav-wrapper,
+  body:not([data-theme="light"]):not(.theme-light) .mobile-nav-container {
+    background: var(--color-bg-soft) !important;
+    color: var(--color-text-main) !important;
+  }
+
+  body[data-theme="light"] .popup-drawer,
+  body.theme-light .popup-drawer,
+  body[data-theme="light"] .popup-drawer .drawer-inner,
+  body.theme-light .popup-drawer .drawer-inner,
+  body[data-theme="light"] .popup-drawer .drawer-content,
+  body.theme-light .popup-drawer .drawer-content,
+  body[data-theme="light"] .mobile-navigation,
+  body.theme-light .mobile-navigation,
+  body[data-theme="light"] .mobile-nav,
+  body.theme-light .mobile-nav,
+  body[data-theme="light"] .mobile-nav-wrapper,
+  body.theme-light .mobile-nav-wrapper,
+  body[data-theme="light"] .mobile-nav-container,
+  body.theme-light .mobile-nav-container {
+    background: var(--color-bg-card) !important;
+    color: var(--color-text-main) !important;
+  }
+
+  /* Flatten inner box so the drawer is a single surface */
+  .popup-drawer .drawer-inner,
+  .popup-drawer .drawer-content,
+  .mobile-nav-wrapper,
+  .mobile-nav-container {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  /* Drawer overlay */
+  body:not([data-theme="light"]):not(.theme-light) .popup-drawer-overlay,
+  body:not([data-theme="light"]):not(.theme-light) .drawer-overlay {
+    background: rgba(7, 11, 20, 0.62) !important;
+  }
+  body[data-theme="light"] .popup-drawer-overlay,
+  body.theme-light .popup-drawer-overlay,
+  body[data-theme="light"] .drawer-overlay,
+  body.theme-light .drawer-overlay {
+    background: rgba(10, 14, 22, 0.18) !important;
+  }
+
+  /* Drawer borders + dividers */
+  body:not([data-theme="light"]):not(.theme-light) .popup-drawer,
+  body:not([data-theme="light"]):not(.theme-light) .mobile-navigation,
+  body:not([data-theme="light"]):not(.theme-light) .mobile-nav-container {
+    border-color: rgba(230, 233, 242, 0.12) !important;
+    box-shadow: 0 22px 60px rgba(0, 0, 0, 0.45) !important;
+  }
+  body[data-theme="light"] .popup-drawer,
+  body.theme-light .popup-drawer,
+  body[data-theme="light"] .mobile-navigation,
+  body.theme-light .mobile-navigation,
+  body[data-theme="light"] .mobile-nav-container,
+  body.theme-light .mobile-nav-container {
+    border-color: rgba(15, 23, 42, 0.12) !important;
+    box-shadow: 0 18px 46px rgba(15, 23, 42, 0.12) !important;
+  }
+
+  /* Mobile menu links */
+  .mobile-navigation a,
+  .mobile-nav a,
+  .mobile-menu a,
+  .drawer-nav a,
+  .popup-drawer a,
+  #mobile-menu a {
+    color: var(--color-text-main) !important;
+  }
+
+  .mobile-navigation a:hover,
+  .mobile-nav a:hover,
+  .mobile-menu a:hover,
+  .drawer-nav a:hover,
+  .popup-drawer a:hover,
+  #mobile-menu a:hover {
+    color: var(--color-gold) !important;
+  }
+
+  /* Mobile menu separators */
+  .mobile-navigation .menu li,
+  .mobile-nav .menu li,
+  .drawer-nav li,
+  #mobile-menu li {
+    border-color: rgba(201, 162, 39, 0.16) !important;
+  }
+
+  /* Toggle + close buttons */
+  .menu-toggle,
+  .menu-toggle button,
+  .mobile-nav-toggle,
+  .mobile-nav-toggle button,
+  .drawer-close,
+  .drawer-close button,
+  .popup-drawer button {
+    color: var(--color-text-main) !important;
+  }
+
+  .menu-toggle svg,
+  .mobile-nav-toggle svg,
+  .drawer-close svg,
+  .popup-drawer svg {
+    fill: currentColor !important;
+  }
+}
+
+/* ============================================================
+   FOOTER LINK COLUMNS + SEARCH STRENGTH CREDIT (added 2026-08-24,
+   revised 2026-08-24 -> single cohesive footer)
+   Scoped to #colophon.agent-footer. Navy/gold to match footer.
+============================================================ */
+
+/* One cohesive row: brand block (blurb + Ready-to-Talk) on the left,
+   three link columns clustered together on the right. */
+#colophon.agent-footer .agent-footer__inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 48px;
+  text-align: left;
+}
+
+/* Brand column: Gold Standard blurb on top, Ready-to-Talk stacked below it. */
+#colophon.agent-footer .agent-footer__brand {
+  flex: 1 1 300px;
+  max-width: 360px;
+  text-align: left;
+}
+
+#colophon.agent-footer .agent-footer__brand .agent-footer__col--left,
+#colophon.agent-footer .agent-footer__brand .agent-footer__col--right {
+  text-align: left;
+}
+
+#colophon.agent-footer .agent-footer__brand .agent-footer__col--right {
+  margin-top: 24px;
+}
+
+#colophon.agent-footer .agent-footer__brand .agent-footer__link {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* Unified typography — left headers match the Plan Types / Coverage Options
+   header treatment EXACTLY (gold, uppercase, same size/weight/letter-spacing). */
+#colophon.agent-footer .agent-footer__brand .agent-footer__title {
+  color: #c9a227;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  margin: 0 0 14px;
+}
+
+/* Body/blurb text matches the link items under the nav columns (size + color).
+   !important needed: a global `body:not(.theme-light) p` rule sets the color !important. */
+#colophon.agent-footer .agent-footer__brand .agent-footer__text {
+  color: rgba(230, 233, 242, 0.75) !important;
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+/* Link columns grouped together on the right, even + tight. */
+#colophon.agent-footer .agent-footer__nav {
+  flex: 1 1 560px;
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 0.85fr) minmax(0, 1.3fr);
+  gap: 36px;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+  border-top: 0;
+}
+
+#colophon.agent-footer .agent-footer__navtitle {
+  color: #c9a227;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  margin: 0 0 14px;
+}
+
+#colophon.agent-footer .agent-footer__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#colophon.agent-footer .agent-footer__list li {
+  margin: 0 0 9px;
+}
+
+#colophon.agent-footer .agent-footer__list li:last-child {
+  margin-bottom: 0;
+}
+
+#colophon.agent-footer .agent-footer__list a {
+  display: inline-block;
+  color: rgba(230, 233, 242, 0.75);
+  text-decoration: none;
+  font-size: 0.92rem;
+  line-height: 1.45;
+  transition: color 0.18s ease;
+}
+
+#colophon.agent-footer .agent-footer__list a:hover,
+#colophon.agent-footer .agent-footer__list a:focus-visible {
+  color: #ffffff;
+}
+
+/* Search Strength credit — faint at rest, gold on hover/focus. */
+#colophon.agent-footer .agent-footer__credit {
+  margin: 12px 0 0;
+  font-size: 11.5px;
+  line-height: 1.5;
+}
+
+#colophon.agent-footer .agent-footer__credit a {
+  color: rgba(232, 236, 244, 0.13);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.25s ease, border-color 0.25s ease;
+}
+
+#colophon.agent-footer .agent-footer__credit a:hover,
+#colophon.agent-footer .agent-footer__credit a:focus-visible {
+  color: #ffe078;
+  border-bottom-color: rgba(255, 224, 120, 0.6);
+}
+
+/* Light theme variants */
+body[data-theme="light"] #colophon.agent-footer .agent-footer__nav,
+body.theme-light #colophon.agent-footer .agent-footer__nav {
+  border-top-color: rgba(15, 23, 42, 0.14);
+}
+
+body[data-theme="light"] #colophon.agent-footer .agent-footer__navtitle,
+body.theme-light #colophon.agent-footer .agent-footer__navtitle,
+body[data-theme="light"] #colophon.agent-footer .agent-footer__brand .agent-footer__title,
+body.theme-light #colophon.agent-footer .agent-footer__brand .agent-footer__title {
+  color: #9a7b1e;
+}
+
+body[data-theme="light"] #colophon.agent-footer .agent-footer__brand .agent-footer__text,
+body.theme-light #colophon.agent-footer .agent-footer__brand .agent-footer__text {
+  color: rgba(11, 18, 32, 0.72) !important;
+}
+
+body[data-theme="light"] #colophon.agent-footer .agent-footer__list a,
+body.theme-light #colophon.agent-footer .agent-footer__list a {
+  color: rgba(11, 18, 32, 0.72);
+}
+
+body[data-theme="light"] #colophon.agent-footer .agent-footer__list a:hover,
+body.theme-light #colophon.agent-footer .agent-footer__list a:focus-visible {
+  color: #0b1220;
+}
+
+body[data-theme="light"] #colophon.agent-footer .agent-footer__credit a,
+body.theme-light #colophon.agent-footer .agent-footer__credit a {
+  color: rgba(11, 18, 32, 0.15);
+}
+
+body[data-theme="light"] #colophon.agent-footer .agent-footer__credit a:hover,
+body.theme-light #colophon.agent-footer .agent-footer__credit a:focus-visible {
+  color: #9a7b1e;
+  border-bottom-color: rgba(154, 123, 30, 0.6);
+}
+
+/* Responsive: stack brand over link row on tablet/mobile; 3 -> 2 -> 1 cols */
+@media (max-width: 900px) {
+  #colophon.agent-footer .agent-footer__inner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 40px;
+  }
+  #colophon.agent-footer .agent-footer__brand {
+    flex-basis: auto;
+    max-width: 560px;
+    text-align: center;
+  }
+  #colophon.agent-footer .agent-footer__brand .agent-footer__col--left,
+  #colophon.agent-footer .agent-footer__brand .agent-footer__col--right {
+    text-align: center;
+  }
+  #colophon.agent-footer .agent-footer__brand .agent-footer__link {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #colophon.agent-footer .agent-footer__nav {
+    flex-basis: auto;
+    width: 100%;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 30px 24px;
+    text-align: left;
+  }
+}
+
+@media (max-width: 640px) {
+  #colophon.agent-footer .agent-footer__nav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 460px) {
+  #colophon.agent-footer .agent-footer__nav {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 28px;
+  }
+  #colophon.agent-footer .agent-footer__list a {
+    font-size: 1rem;
+  }
+}

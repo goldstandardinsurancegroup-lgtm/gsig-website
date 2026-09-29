@@ -1,0 +1,168 @@
+body.page-slug-privacy-policy .entry-content-wrap,
+body.page-id-3 .entry-content-wrap {
+  background: var(--color-bg-card, #ffffff);
+  border: 1px solid var(--color-border-soft, rgba(15, 23, 42, 0.1));
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(var(--color-bg-main-rgb, 11, 18, 32), 0.16);
+  padding: clamp(1.25rem, 2.2vw, 2.5rem);
+  overflow: visible;
+}
+
+body.page-slug-privacy-policy .content-bg,
+body.page-slug-privacy-policy .single-entry,
+body.page-id-3 .content-bg,
+body.page-id-3 .single-entry {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+body.page-slug-privacy-policy .entry-hero,
+body.page-slug-privacy-policy .entry-header,
+body.page-slug-privacy-policy .entry-title,
+body.page-id-3 .entry-hero,
+body.page-id-3 .entry-header,
+body.page-id-3 .entry-title {
+  display: none !important;
+}
+
+body.page-slug-privacy-policy .entry-content,
+body.page-id-3 .entry-content {
+  max-width: 900px;
+  margin: 0 auto;
+  line-height: 1.72;
+  color: var(--color-text-main, #1f2937);
+  overflow-x: visible;
+  padding-inline: clamp(0.15rem, 1vw, 0.6rem);
+}
+
+body.page-slug-privacy-policy .entry-content h1,
+body.page-slug-privacy-policy .entry-content h2,
+body.page-slug-privacy-policy .entry-content h3,
+body.page-id-3 .entry-content h1,
+body.page-id-3 .entry-content h2,
+body.page-id-3 .entry-content h3 {
+  color: var(--color-text-main, #0b1220);
+  margin-top: 1.5em;
+  margin-bottom: 0.45em;
+  line-height: 1.25;
+}
+
+body.page-slug-privacy-policy .entry-content p,
+body.page-slug-privacy-policy .entry-content li,
+body.page-id-3 .entry-content p,
+body.page-id-3 .entry-content li {
+  color: var(--color-text-main, #1f2937);
+  max-width: none !important;
+}
+
+body.page-slug-privacy-policy .entry-content strong,
+body.page-id-3 .entry-content strong {
+  color: var(--color-text-main, #0b1220);
+}
+
+body.page-slug-privacy-policy .entry-content a,
+body.page-id-3 .entry-content a {
+  color: var(--color-primary, #00356b);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+body.page-slug-privacy-policy .entry-content a:hover,
+body.page-id-3 .entry-content a:hover {
+  opacity: 0.82;
+}
+
+body.page-slug-privacy-policy .entry-content ul,
+body.page-id-3 .entry-content ul {
+  padding-left: 1.2rem;
+  margin-left: 0;
+}
+
+body.page-slug-privacy-policy .entry-content hr,
+body.page-id-3 .entry-content hr {
+  border: 0;
+  border-top: 1px solid var(--color-border-soft, rgba(15, 23, 42, 0.1));
+  margin: 1.5rem 0;
+}
+
+@media (max-width: 1024px) {
+  body.page-slug-privacy-policy .entry-content-wrap,
+  body.page-id-3 .entry-content-wrap {
+    border-radius: 12px;
+    padding: 1.15rem;
+  }
+
+  body.page-slug-privacy-policy .entry-content,
+  body.page-id-3 .entry-content {
+    line-height: 1.68;
+  }
+}
+
+@media (max-width: 767px) {
+  body.page-slug-privacy-policy .wp-site-blocks,
+  body.page-id-3 .wp-site-blocks {
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+  }
+
+  body.page-slug-privacy-policy .content-container,
+  body.page-slug-privacy-policy .site-container,
+  body.page-slug-privacy-policy .content-wrap,
+  body.page-id-3 .content-container,
+  body.page-id-3 .site-container,
+  body.page-id-3 .content-wrap {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  body.page-slug-privacy-policy .entry-content-wrap,
+  body.page-id-3 .entry-content-wrap {
+    padding: max(1.15rem, env(safe-area-inset-top)) max(1.15rem, env(safe-area-inset-right))
+      max(1.15rem, env(safe-area-inset-bottom)) max(1.15rem, env(safe-area-inset-left)) !important;
+    border-radius: 12px !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    border-color: var(--color-border-soft, rgba(15, 23, 42, 0.14)) !important;
+    background: var(--color-bg-card, #050913) !important;
+    box-shadow: 0 8px 20px rgba(var(--color-bg-main-rgb, 11, 18, 32), 0.26) !important;
+  }
+
+  body.page-slug-privacy-policy .entry-content h2,
+  body.page-id-3 .entry-content h2 {
+    font-size: 1.3rem;
+  }
+
+  body.page-slug-privacy-policy .entry-content h3,
+  body.page-id-3 .entry-content h3 {
+    font-size: 1.08rem;
+  }
+
+  body.page-slug-privacy-policy .entry-content,
+  body.page-id-3 .entry-content {
+    max-width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+
+  body.page-slug-privacy-policy .entry-content p,
+  body.page-slug-privacy-policy .entry-content li,
+  body.page-id-3 .entry-content p,
+  body.page-id-3 .entry-content li {
+    max-width: 100%;
+  }
+
+  body.page-slug-privacy-policy #primary,
+  body.page-slug-privacy-policy #main,
+  body.page-id-3 #primary,
+  body.page-id-3 #main {
+    overflow: visible !important;
+    background: transparent !important;
+  }
+}
