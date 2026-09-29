@@ -142,6 +142,15 @@ details.faq > *:not(summary){padding:0 20px 16px;color:var(--ink-2);font-size:.9
 .article details > *:not(summary){padding:0 18px 15px;margin:0}
 .article img{border-radius:12px;border:1px solid var(--line)}
 .table-scroll{overflow-x:auto}
+form.contact{display:grid;gap:8px;max-width:560px;margin:14px 0 22px;padding:22px;
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius)}
+form.contact label{font-weight:600;font-size:.9rem;margin-top:6px}
+form.contact label span{font-weight:400;color:var(--ink-3)}
+form.contact input,form.contact textarea{font:inherit;color:var(--ink);background:rgba(0,0,0,.35);
+  border:1px solid var(--line-2);border-radius:10px;padding:11px 13px;width:100%}
+form.contact input:focus,form.contact textarea:focus{outline:2px solid var(--gold);outline-offset:1px;border-color:var(--gold)}
+form.contact button{justify-self:start;margin-top:10px}
+form.contact .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
 .map iframe{width:100%;height:340px;border:0;border-radius:12px;display:block;margin:6px 0 18px}
 .article .grid{margin:10px 0 22px}
 
